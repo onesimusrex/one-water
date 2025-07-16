@@ -126,9 +126,24 @@ h6 {
   margin-bottom: 1rem;
 }
 
+.slide-title2 {
+  font-size: 1.5rem;
+  color: $one-water-navy-blue;
+  margin-bottom: 1rem;
+}
+
+.heading-navy-blue {
+  color: $one-water-navy-blue;
+}
+
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .slide-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .slide-title2 {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
@@ -138,6 +153,11 @@ h6 {
 @media (min-width: 768px) {
   .slide-title {
     font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .slide-title2 {
+    font-size: 2.5rem;
     margin-bottom: 1.5rem;
   }
 }
@@ -150,6 +170,11 @@ h6 {
 @media (min-width: 1200px) {
   .slide-title {
     font-size: 4.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .slide-title2 {
+    font-size: 3.5rem;
     margin-bottom: 2rem;
   }
 }
@@ -380,4 +405,26 @@ h6 {
       color: $one-water-navy-blue;
     }
   }
+}
+
+//Link Styling
+
+.checkmark-list {
+  list-style: none; /* Remove default bullet points */
+  padding-left: 0; /* Remove default padding */
+  color: $one-water-navy-blue;
+  font-size: 1rem;
+}
+
+.checkmark-list li {
+  padding-left: 1em; /* Adjust for checkmark width */
+  text-indent: -1em; /* Align text with checkmark */
+}
+
+.checkmark-list li:before {
+  content: "\2713"; /* Unicode for checkmark */
+  display: inline-block;
+  width: 1em; /* Adjust for checkmark width */
+  color: $one-water-orange;
+  font-weight: bolder;
 }

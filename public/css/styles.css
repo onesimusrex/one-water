@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -81,8 +82,22 @@ h6 {
   margin-bottom: 1rem;
 }
 
+.slide-title2 {
+  font-size: 1.5rem;
+  color: #282458;
+  margin-bottom: 1rem;
+}
+
+.heading-navy-blue {
+  color: #282458;
+}
+
 @media (min-width: 576px) {
   .slide-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .slide-title2 {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
@@ -92,10 +107,18 @@ h6 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
   }
+  .slide-title2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
 }
 @media (min-width: 1200px) {
   .slide-title {
     font-size: 4.5rem;
+    margin-bottom: 2rem;
+  }
+  .slide-title2 {
+    font-size: 3.5rem;
     margin-bottom: 2rem;
   }
 }
@@ -285,4 +308,23 @@ h6 {
     font-size: 48px;
     color: #282458;
   }
+}
+.checkmark-list {
+  list-style: none; /* Remove default bullet points */
+  padding-left: 0; /* Remove default padding */
+  color: #282458;
+  font-size: 1rem;
+}
+
+.checkmark-list li {
+  padding-left: 1em; /* Adjust for checkmark width */
+  text-indent: -1em; /* Align text with checkmark */
+}
+
+.checkmark-list li:before {
+  content: "✓"; /* Unicode for checkmark */
+  display: inline-block;
+  width: 1em; /* Adjust for checkmark width */
+  color: #f28b2e;
+  font-weight: bolder;
 }

@@ -33,68 +33,73 @@
   <div id="swup" class="transition-fade">
     <article>
       <div class="container">
-        <div class="row">
-          <h2 class="">Key Concepts of One Water</h2>
+        <div>
+          <h1 class="slide-title2">Key Concepts of One Water</h1>
           <div class="row text-center justify-content-center">
 
             <!-- Resilience & Sustainability -->
-            <div class="col-md-4">
+            <div class="col-md-4 px-4">
               <div class="concept-image-wrapper mb-3">
                 <img src="img/key_concepts_1.jpeg" alt="Resilience & Sustainability" class="img-fluid rounded" />
               </div>
-              <h5 class="fw-bold">Resilience &amp; Sustainability</h5>
-              <ul class="no-bullets text-start d-inline-block">
-                <li>✓ Promoting economic, social, and environmental sustainability</li>
-                <li>✓ Balancing quantity and quality with rising demand</li>
-                <li>✓ Managing flooding and extreme weather</li>
+              <h5 class="fw-bold heading-navy-blue">Resilience &amp; Sustainability</h5>
+              <ul class="checkmark-list text-start mt-3">
+                <li>Promoting economic, social, and environmental sustainability</li>
+                <li>Balancing quantity and quality with rising demand</li>
+                <li>Managing flooding and extreme weather</li>
               </ul>
             </div>
 
             <!-- Interconnected Water Systems -->
-            <div class="col-md-4">
+            <div class="col-md-4 px-4">
               <div class="concept-image-wrapper mb-3">
                 <img src="img/key_concepts_2.jpeg" alt="Interconnected Water Systems" class="img-fluid rounded" />
               </div>
-              <h5 class="fw-bold">Interconnected Water Systems</h5>
-              <ul class="no-bullets text-start d-inline-block">
-                <li>✓ Understanding that our water and our interactions with it are all connected</li>
-                <li>✓ Evaluating infrastructure improvements that can drive change</li>
-                <li>✓ Accounting for the nexus between water, energy, the built environment, and food security</li>
+              <h5 class="fw-bold heading-navy-blue">Interconnected Water Systems</h5>
+              <ul class="checkmark-list text-start mt-3">
+                <li>Understanding that our water and our interactions with it are all connected</li>
+                <li>Evaluating infrastructure improvements that can drive change</li>
+                <li>Accounting for the nexus between water, energy, the built environment, and food security</li>
               </ul>
             </div>
 
             <!-- Water Equity -->
-            <div class="col-md-4">
+            <div class="col-md-4 px-4">
               <div class="concept-image-wrapper mb-3">
                 <img src="img/key_concepts_3.jpeg" alt="Water Equity" class="img-fluid rounded" />
               </div>
-              <h5 class="fw-bold">Water Equity</h5>
-              <ul class="no-bullets text-start d-inline-block">
-                <li>✓ Planning on the basis that affordability and access to water is critical</li>
-                <li>✓ Fostering community-driven decision making to help ensure policies do not unfairly exclude certain populations</li>
-                <li>✓ Implementing projects with equitable benefits and impacts</li>
+              <h5 class="fw-bold heading-navy-blue">Water Equity</h5>
+              <ul class="checkmark-list text-start mt-3">
+                <li>Planning on the basis that affordability and access to water is critical</li>
+                <li>Fostering community-driven decision making to help ensure policies do not unfairly exclude certain
+                  populations</li>
+                <li>Implementing projects with equitable benefits and impacts</li>
               </ul>
             </div>
 
           </div>
 
-          <div class="text-center mt-4">
-            <p class="small text-muted fst-italic">
-              Click on the pictures to learn more about each topic.<br />
-              Then, click on <span class="material-symbols-outlined align-middle">home</span> to return to the main home page.
-            </p>
-          </div>
+
         </div>
       </div>
     </article>
+
+    <footer>
+      <div class="text-center mt-4">
+        <p class="small text-muted fst-italic">
+          Click on the pictures to learn more about each topic. Then, click on <span
+            class="material-symbols-outlined align-middle">home</span> to return to the main home
+          page.
+        </p>
+      </div>
+    </footer>
   </div>
 
-<script src="https://unpkg.com/swup@4"></script>
-<script>
-  const swup = new Swup({
-    containers: ['#swup'],
-    animations: [
-      {
+  <script src="https://unpkg.com/swup@4"></script>
+  <script>
+    const swup = new Swup({
+      containers: ['#swup'],
+      animations: [{
         name: 'slide-up',
         from: '(.*)',
         to: '(.*)',
@@ -110,10 +115,9 @@
           duration: 600,
           easing: 'ease-in-out'
         }
-      }
-    ]
-  });
-</script>
+      }]
+    });
+  </script>
 </body>
 
 </html>

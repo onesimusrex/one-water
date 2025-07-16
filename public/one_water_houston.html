@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>One Water Houston</title>
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+
+<body class="bg-light-teal">
+  <header>
+    <nav class="d-flex justify-content-between">
+      <a href="home.html" class="nav-icon"><span class="material-symbols-outlined">home</span></a>
+      <div>
+        <a href="help.html" class="nav-icon"><span class="material-symbols-outlined">help</span></a>
+        <a href="glossary.html" class="nav-icon"><span class="material-symbols-outlined">dictionary</span></a>
+      </div>
+      <img src="img/SVG/One-Water-Logo_White.svg" alt="One Water Logo" class="logo">
+    </nav>
+  </header>
+
+  <div id="swup" class="transition-fade">
+    <article>
+      <div class="container py-5">
+        <div class="row justify-content-center mb-4 text-center">
+          <h1 class="slide-title2">One Water Houston</h1>
+          <p class="lead">We invite you to join us as we embark on our own One Water journey in Houston!</p>
+        </div>
+
+        <div class="row justify-content-center text-center">
+          <!-- Development Process -->
+          <div class="col-md-6 mb-4">
+            <div class="concept-image-wrapper mb-3">
+              <img src="img/one_water_houston_1.png" alt="Development Process" class="img-fluid rounded" />
+            </div>
+            <h6 class="fw-bold heading-navy-blue">Development process</h6>
+          </div>
+
+          <!-- Input Shaping the Plan -->
+          <div class="col-md-6 mb-4">
+            <div class="concept-image-wrapper mb-3">
+              <img src="img/one_water_houston_2.png" alt="Input shaping the plan" class="img-fluid rounded" />
+            </div>
+            <h6 class="fw-bold heading-navy-blue">How your input will shape the One Water Houston plan</h6>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <footer>
+      <div class="text-center mt-3">
+        <p class="small text-muted fst-italic">
+          Click on the pictures to learn more about each topic. Then, click on 
+          <span class="material-symbols-outlined align-middle">home</span> to return to the main home page.
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/swup@4"></script>
+  <script>
+    const swup = new Swup({
+      containers: ['#swup'],
+      animations: [{
+        name: 'slide-up',
+        from: '(.*)',
+        to: '(.*)',
+        out: {
+          opacity: [1, 0],
+          y: 80,
+          duration: 500,
+          easing: 'ease-in-out'
+        },
+        in: {
+          opacity: [0, 1],
+          y: [-80, 0],
+          duration: 600,
+          easing: 'ease-in-out'
+        }
+      }]
+    });
+  </script>
+</body>
+
+</html>

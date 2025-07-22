@@ -4,74 +4,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Resilience & Sustainability</title>
+  <title>Resilience &amp; Sustainability – Key Concepts of One Water</title>
 
-  <!-- Bootstrap 5 CDN -->
+  <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom CSS (optional) -->
+  <!-- Google Icons + Custom Styles -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/custom.css" />
-  <!-- <link rel="stylesheet" href="css/animations.css" /> -->
 
+  <!-- ✨ Inline page‑specific styles for the blur/overlay effect -->
   <style>
-    html{
-      background: #0c2357;
+    /* Wrapper for the hero image and its overlay */
+    .image-overlay-wrapper {
+      position: relative;
+      cursor: pointer; /* Indicates interactivity */
     }
-    body {
-      background: #0c2357;
-      color: #fff;
-      min-height: 100vh;
+
+    /* Hero image itself */
+    .image-overlay-wrapper .hero-img {
+      transition: filter 0.4s ease;
     }
-    .main-title {
-      font-size: 2.3rem;
-      font-weight: bold;
-      margin-top: 2.2rem;
-      color: #fff;
-    }
-    .desc {
-      font-size: 1.2rem;
-      font-weight: 500;
-      margin-bottom: 2.1rem;
-      color: #fff;
-    }
-    .img-framed {
-      border: 6px solid #f58220;
-      border-radius: 24px;
-      width: 100%;
-      margin: 2rem 0 1.5rem 0;
-      object-fit:scale-down;
-      max-height: 300px;
-    }
-    .btn-bar {
+
+    /* Semi‑transparent overlay that appears on click */
+    .image-overlay-wrapper .overlay-content {
       position: absolute;
-      bottom: 24px;
-      left: 0;
-      width: 100%;
-      padding: 0 40px;
+      inset: 0;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.55); /* Light‑dark veil */
+      padding: 2rem 1.5rem;
+      border-radius: inherit; /* Match the image’s rounded corners */
+      opacity: 0;
+      pointer-events: none;   /* Ignore clicks until visible */
+      transition: opacity 0.4s ease;
     }
-    .footer-tip {
-      color: #b7d4f3;
-      font-size: 1rem;
-      margin-top: 2.5rem;
-      text-align: center;
+
+    /* Activate the blur and reveal overlay */
+    .image-overlay-wrapper.active .hero-img {
+      filter: blur(4px) brightness(0.8);
     }
-    .water-logo {
-      position: absolute;
-      top: 18px;
-      right: 32px;
-      width: 48px;
-      opacity: 0.90;
+
+    .image-overlay-wrapper.active .overlay-content {
+      opacity: 1;
+      pointer-events: all; /* Allow text selection when shown */
+    }
+
+    /* Optional: nicer arrow between columns on larger screens */
+    .overlay-arrow {
+      font-size: clamp(1.5rem, 2.2vw, 3rem);
+      line-height: 1;
     }
   </style>
 </head>
 
-<body>
+<body class="bg-light-teal">
+  <!-- ▸▸▸ Global navigation header (unchanged) -->
   <header>
     <nav class="d-flex justify-content-between">
       <a href="home.html" class="nav-icon"><span class="material-symbols-outlined">home</span></a>
@@ -82,21 +74,122 @@
       <img src="img/SVG/One-Water-Logo_White.svg" alt="One Water Logo" class="logo">
     </nav>
   </header>
-  
-  <div class="container text-center">
-    <div class="main-title">Resilience &amp; Sustainability</div>
-    <div class="desc">
-      Sustainability is development that meets the needs of the <b>present</b> without compromising the ability of <b>future</b> generations to meet their own needs. Sustainability considers social, economic and environmental needs.
-    </div>
-    <img src="img/resilience_and_sustainability_1.jpeg" alt="Bayou" class="img-framed" />
-    <div class="footer-tip">
-      Click on the picture to learn more about one way Houston is promoting sustainable solutions.
-    </div>
-    <div class="btn-bar">
-      <span class="material-symbols-outlined" style="font-size: 2.3rem; color: #e0e4e7; cursor: pointer;">help</span>
-      <span class="material-symbols-outlined" style="font-size: 2.3rem; color: #e0e4e7; cursor: pointer;">close</span>
-      <span class="material-symbols-outlined" style="font-size: 2.3rem; color: #e0e4e7; cursor: pointer;">home</span>
-    </div>
-  </div>
+
+  <!-- 🌀 Swup page‑transition container -->
+  <div id="swup" class="transition-fade">
+    <article>
+      <section class="container-lg text-white py-5">
+
+        <!-- Page Heading -->
+        <div class="row justify-content-center mb-4">
+          <div class="col-12 col-xl-10">
+            <h1 class="display-5 fw-bold mb-3 slide-title2">
+              Resilience &amp; Sustainability
+            </h1>
+            <p class="lead mb-0">
+              Sustainability is development that meets the needs of the
+              <span class="fw-bold fst-italic">present</span> without compromising the ability of
+              <span class="fw-bold fst-italic">future</span> generations to meet their own needs.
+              Sustainability considers social, economic, and environmental needs.
+            </p>
+          </div>
+        </div>
+
+        <!-- ✨ Interactive Hero Image -->
+        <div class="row justify-content-center">
+          <div class="col-12 col-xl-10">
+            <!-- Wrapper toggles 'active' class on click -->
+            <div class="image-overlay-wrapper rounded-4 border border-4 border-warning">
+              <!-- Main image -->
+              <img src="img/resilience_and_sustainability_1.jpeg"
+                   alt="A vegetated stormwater channel in Houston illustrating resilient and sustainable infrastructure"
+                   class="img-fluid w-100 hero-img rounded-4" />
+
+                    <!-- Hidden overlay content (REPLACE this whole block) -->
+                    <div class="overlay-content rounded-4">
+                      <div class="row g-4 align-items-center">
+
+                        <!-- Problem column -->
+                        <div class="col-md-5">
+                          <h5 class="text-info fw-bold mb-2">Problem:</h5>
+                          <p class="mb-0">
+                            Over‑extraction of groundwater in the early 1970s caused significant
+                            subsidence in the Houston‑Galveston region. Some areas lost as much
+                            as twelve to thirteen feet of elevation.
+                          </p>
+                        </div>
+
+                        <!-- Arrow (only visible on md+ screens) -->
+                        <div class="col-md-1 d-none d-md-flex justify-content-center">
+                          <span class="overlay-arrow">&#10140;</span>
+                        </div>
+
+                        <!-- Solution text -->
+                        <div class="col-md-4">
+                          <h5 class="text-info fw-bold mb-2">Regional Partnership &amp; Solution:</h5>
+                          <p class="mb-0">
+                            The Harris‑Galveston Subsidence District was established in 1975
+                            to develop ways to reduce reliance on groundwater supply. This helps
+                            protect lives and property from the impacts of future subsidence,
+                            such as flooding and building damage.
+                          </p>
+                        </div>
+
+                        <!-- Logo in its own column -->
+                        <div class="col-md-2 text-md-end text-center">
+                          <img src="img/subsidence_district_logo.png"
+                              alt="Harris‑Galveston Subsidence District logo"
+                              class="bg-white p-2 rounded-2 shadow"
+                              style="max-height: 90px;" />
+                        </div>
+
+                      </div>
+                    </div><!-- /overlay-content -->
+
+            </div><!-- /image-overlay-wrapper -->
+          </div>
+        </div>
+
+        <!-- Caption -->
+        <div class="row">
+          <div class="col-12">
+            <p class="small text-center fst-italic mt-3">
+              Click on the picture to learn more about one way Houston is promoting sustainable solutions.
+            </p>
+          </div>
+        </div>
+
+      </section>
+    </article>
+
+    <!-- Global Footer (unchanged) -->
+    <footer class="pb-3">
+      <div class="text-center mt-4">
+        <p class="small text-muted fst-italic mb-0">
+          Click on the pictures to learn more about each topic.&nbsp;Then, click
+          on&nbsp;<span class="material-symbols-outlined align-middle">home</span>&nbsp;to return to the main home page.
+        </p>
+      </div>
+    </footer>
+  </div><!-- /#swup -->
+
+  <!-- Swup (unchanged, still optional) -->
+  <script src="https://unpkg.com/swup@4"></script>
+
+  <!-- ✨ Tiny inline script to toggle blur/overlay -->
+  <script>
+    // Wait until the DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const wrapper = document.querySelector('.image-overlay-wrapper');
+      if (!wrapper) return;
+
+      wrapper.addEventListener('click', (event) => {
+        // Prevent accidental link navigation if image had an <a>
+        event.preventDefault();
+        // Toggle overlay + blur
+        wrapper.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>

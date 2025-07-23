@@ -59,6 +59,7 @@
       font-size: clamp(1.5rem, 2.2vw, 3rem);
       line-height: 1;
     }
+
   </style>
 </head>
 
@@ -147,7 +148,54 @@
                     </div><!-- /overlay-content -->
 
             </div><!-- /image-overlay-wrapper -->
+
+            <!-- Reliable next button below the hero image -->
+            <div class="text-end mt-3">
+              <button id="next-btn" class="btn btn-primary btn-lg d-none" aria-label="Next slide">
+                &#10140;
+              </button>
+            </div>
           </div>
+        </div>
+
+        <!-- Second content slide – initially hidden -->
+        <div id="next-content" class="d-none mt-5">
+          <div class="row gy-4 align-items-center text-white">
+            <!-- Diamond graphic -->
+            <div class="col-md-5 text-center">
+              <img src="img/layered_diamonds.png"
+                   alt="Layered diamond graphic illustrating types of resilience"
+                   class="img-fluid" style="max-width: 480px;">
+            </div>
+            <!-- Bullet list -->
+            <div class="col-md-7">
+              <ul class="list-unstyled fs-5 mb-0">
+                <li class="mb-4">
+                  <span class="fw-bold text-info">Economic resilience</span><br>
+                  • Minimize costs through integrated water practices<br>
+                  • Reduce vulnerability to extreme weather or economic shocks through infrastructure improvements
+                </li>
+                <li class="mb-4">
+                  <span class="fw-bold text-info">Social resilience</span><br>
+                  • Build community knowledge about water conservation and resilience<br>
+                  • Increase disaster preparedness and community response
+                </li>
+                <li>
+                  <span class="fw-bold text-info">Environmental resilience</span><br>
+                  • Protect and restore rivers, wetlands, and aquifers<br>
+                  • Ensure water management supports habitats and ecosystems for wildlife
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-start mt-3">
+            <button id="back-btn" class="btn btn-secondary btn-lg" aria-label="Back to hero slide">
+              &#11013;
+            </button>
+          </div>
+          <p class="small text-center fst-italic mt-4">
+            Click anywhere to return to the main topic.
+          </p>
         </div>
 
         <!-- Caption -->
@@ -176,18 +224,39 @@
   <!-- Swup (unchanged, still optional) -->
   <script src="https://unpkg.com/swup@4"></script>
 
-  <!-- ✨ Tiny inline script to toggle blur/overlay -->
+  <!-- ✨ Script to toggle overlay and advance slide -->
   <script>
-    // Wait until the DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
-      const wrapper = document.querySelector('.image-overlay-wrapper');
-      if (!wrapper) return;
+      const wrapper     = document.querySelector('.image-overlay-wrapper');
+      const nextBtn     = document.getElementById('next-btn');
+      const nextContent = document.getElementById('next-content');
+      const backBtn     = document.getElementById('back-btn');
 
-      wrapper.addEventListener('click', (event) => {
-        // Prevent accidental link navigation if image had an <a>
-        event.preventDefault();
-        // Toggle overlay + blur
+      if (!wrapper || !nextBtn || !nextContent || !backBtn) return;
+
+      // Show overlay + reveal next button
+      wrapper.addEventListener('click', (e) => {
+        e.preventDefault();
         wrapper.classList.toggle('active');
+        nextBtn.classList.toggle('d-none', !wrapper.classList.contains('active'));
+      });
+
+      // Advance to second content block
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();                       // do not re‑toggle overlay
+        wrapper.parentElement.classList.add('d-none'); // hide hero row
+        nextContent.classList.remove('d-none');        // show new slide
+        nextBtn.classList.add('d-none');               // hide button
+      });
+
+      /* Go back to hero slide */
+      backBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextContent.classList.add('d-none');          // hide second slide
+        wrapper.parentElement.classList.remove('d-none'); // show hero row
+        wrapper.classList.remove('active');           // reset overlay
+        nextBtn.classList.add('d-none');              // hide next button
+        // back button is inside nextContent; hiding the container is enough
       });
     });
   </script>

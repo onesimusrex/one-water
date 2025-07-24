@@ -37,6 +37,19 @@
       font-size:56px;                  /* large glyph */
       line-height:1;
     }
+
+    /* Super‑imposed droplet icon on image */
+    .overlay-icon{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%); /* centre horizontally & vertically */
+      width:65%;                       /* slightly larger for better framing */
+      max-width:180px;                 /* cap size on wider screens */
+      height:auto;
+      pointer-events:none;             /* click passes through */
+      filter:drop-shadow(0 0 4px rgba(0,0,0,.4));
+    }
   </style>
 
 </head>
@@ -115,30 +128,46 @@
       as part of One Water Houston and might include:
     </p>
 
-    <ul class="fs-5">
-      <li class="mb-3">
-        <span class="fw-bold text-info">Flood Vulnerability</span><br>
-        • Historically marginalized communities can be located in flood‑prone areas and struggle
-          the most to recover from natural disasters.
-      </li>
-      <li class="mb-3">
-        <span class="fw-bold text-info">Disparities in Infrastructure Investment</span><br>
-        • National trends indicate that underserved communities face more frequent water main breaks,
-          poorer water quality, and flooding due to delayed investment.
-      </li>
-      <li class="mb-3">
-        <span class="fw-bold text-info">Limited Representation</span><br>
-        • Lack of community involvement in water decision‑making leads to policies that neglect
-          the needs of vulnerable populations.
-      </li>
-      <li>
-        <span class="fw-bold text-info">Polluted Waterways</span><br>
-        • Industrial zones and urban runoff have polluted bayous, impacting the health and safety
-          of some nearby communities.
-      </li>
-    </ul>
+    <div class="row g-4 align-items-start">
+      <!-- Bullet list -->
+      <div class="col-md-8">
+        <ul class="fs-5 mb-0">
+          <li class="mb-3">
+            <span class="fw-bold text-info">Flood Vulnerability</span><br>
+            • Historically marginalized communities can be located in flood‑prone areas and struggle
+              the most to recover from natural disasters.
+          </li>
+          <li class="mb-3">
+            <span class="fw-bold text-info">Disparities in Infrastructure Investment</span><br>
+            • National trends indicate that underserved communities face more frequent water main breaks,
+              poorer water quality, and flooding due to delayed investment.
+          </li>
+          <li class="mb-3">
+            <span class="fw-bold text-info">Limited Representation</span><br>
+            • Lack of community involvement in water decision‑making leads to policies that neglect
+              the needs of vulnerable populations.
+          </li>
+          <li>
+            <span class="fw-bold text-info">Polluted Waterways</span><br>
+            • Industrial zones and urban runoff have polluted bayous, impacting the health and safety
+              of some nearby communities.
+          </li>
+        </ul>
+      </div>
 
-
+      <!-- Illustrative image with super‑imposed droplet icon -->
+      <div class="col-md-4 text-center position-relative">
+        <!-- Background photo -->
+        <img src="img/water_equity_1.png"
+             alt="Houston bayou background"
+             class="img-fluid rounded-4 border border-4 border-warning"
+             style="max-width:600px;">
+        <!-- White droplet icon overlay -->
+        <img src="img/SVG/One-Water-Logo_White.svg"
+             alt="One Water droplet icon"
+             class="position-absolute top-50 start-50 translate-middle overlay-icon">
+      </div>
+    </div>
 
     <!-- Nav buttons -->
     <div class="d-flex justify-content-between mt-4">

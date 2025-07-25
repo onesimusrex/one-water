@@ -32,6 +32,17 @@
       transform:translate(-50%,-100%);
     }
     .city-pin.blue{background:#0d6efd;}
+
+    /* Orange city buttons beneath the map */
+    .city-btn{
+      background:#F28C28;
+      border:none;
+      color:#fff;
+      font-weight:600;
+      padding:.6rem 1.2rem;
+      border-radius:.5rem;
+    }
+    .city-btn:hover,.city-btn:focus{background:#d97706;color:#fff;}
   </style>
 
 </head>
@@ -93,10 +104,12 @@
         <div class="position-relative text-center">
           <img src="img/map_1.png"
                alt="Map of USA with highlighted cities"
-               class="img-fluid" style="max-width:600px;">
-          <!-- Pins (approximate positions) -->
-          <span id="pin-la"     class="city-pin" style="left:17%; top:55%;"></span><!-- Los Angeles -->
-          <span id="pin-austin" class="city-pin blue" style="left:50%; top:63%;"></span><!-- Austin -->
+               class="img-fluid" style="max-width:800px;">
+        </div>
+        <!-- City buttons -->
+        <div class="d-flex justify-content-center gap-3 mt-3">
+          <button id="btn-la"     class="city-btn">Los Angeles, CA</button>
+          <button id="btn-austin" class="city-btn">Austin, TX</button>
         </div>
 
         <!-- Back + Home nav -->
@@ -110,7 +123,7 @@
         </div>
 
         <p class="small text-center fst-italic mt-4">
-          Click on Los Angeles, CA or Austin, TX to learn more about their One Water plan.
+          Select Los Angeles, CA or Austin, TX below to learn more about their One Water plan.
         </p>
       </section>
 
@@ -128,7 +141,7 @@
         <div class="row g-4">
           <!-- Reuse / Recycling -->
           <div class="col-md-4 text-center">
-            <img src="img/one_water_la_reuse.jpg" alt="LAX recycled water"
+            <img src="img/one_water_la_1.jpeg" alt="LAX recycled water"
                  class="img-fluid rounded-4 mb-2">
             <p class="fw-bold">Water Reuse and Recycling</p>
             <p class="small">Expands use of recycled water for irrigation, industrial uses, and groundwater recharge.</p>
@@ -136,7 +149,7 @@
 
           <!-- Stormwater -->
           <div class="col-md-4 text-center">
-            <img src="img/one_water_la_green_alley.jpg" alt="Green Alley project"
+            <img src="img/one_water_la_2.jpeg" alt="Green Alley project"
                  class="img-fluid rounded-4 mb-2">
             <p class="fw-bold">Stormwater Management</p>
             <p class="small">Plans for increased green infrastructure projects to capture and treat runoff.</p>
@@ -144,9 +157,9 @@
 
           <!-- Plan cover -->
           <div class="col-md-4 text-center">
-            <img src="img/one_water_la_plan_cover.jpg" alt="One Water LA plan cover"
-                 class="img-fluid rounded-4 mb-2" style="max-width:140px;">
-            <p><a href="https://lacity.gov/" target="_blank">Read the One Water L.A. plan</a></p>
+            <img src="img/one_water_la_3.png" alt="One Water LA plan cover"
+                 class="img-fluid rounded-4 mb-2" style="max-width:400px;">
+            <p><a href="https://planning.lacity.gov/eir/Sunset_Wilcox/deir/deir_reference_docs/water-supply/City%20of%20Los%20Angeles%20-%20One%20Water%20LA%202040%20Plan,%20Volume%201,%20Summary%20Report,%20April%202018.pdf" target="_blank">Read the One Water L.A. plan</a></p>
           </div>
         </div>
 
@@ -176,23 +189,23 @@
         <div class="row g-4">
           <!-- Reuse drawings -->
           <div class="col-md-4 text-center">
-            <img src="img/austin_dual_plumb.jpg" alt="Dual plumbing diagram"
+            <img src="img/one_water_austin_B_1.png" alt="Dual plumbing diagram"
                  class="img-fluid rounded-4 mb-2">
             <p class="fw-bold">Dual Plumbing Systems</p>
             <p class="small">New development on‑site water reuse.</p>
           </div>
 
           <div class="col-md-4 text-center">
-            <img src="img/austin_central_reuse.jpg" alt="Central reuse system"
+            <img src="img/one_water_austin_B_2.png" alt="Central reuse system"
                  class="img-fluid rounded-4 mb-2">
             <p class="fw-bold">Centralized Recycled Water</p>
             <p class="small">Modifying and expanding recycled water system.</p>
           </div>
 
           <div class="col-md-4 text-center">
-            <img src="img/water_forward_cover.jpg" alt="Water Forward plan cover"
-                 class="img-fluid rounded-4 mb-2" style="max-width:140px;">
-            <p><a href="https://www.austintexas.gov/" target="_blank">Read the Water Forward plan</a></p>
+            <img src="img/one_water_austin_B_3.png" alt="Water Forward plan cover"
+                 class="img-fluid rounded-4 mb-2" style="max-width:400px;">
+            <p><a href="https://www.austintexas.gov/department/water-forward" target="_blank">Read the Water Forward plan</a></p>
           </div>
         </div>
 
@@ -238,9 +251,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // Slide 2 back
   document.getElementById('back-btn-2').onclick = ()=>{s2.classList.add('d-none'); s1.classList.remove('d-none');};
 
-  // Map pins
-  document.getElementById('pin-la').onclick     = ()=>{s2.classList.add('d-none'); s3.classList.remove('d-none');};
-  document.getElementById('pin-austin').onclick = ()=>{s2.classList.add('d-none'); s4.classList.remove('d-none');};
+  // Map buttons
+  document.getElementById('btn-la').onclick     = ()=>{s2.classList.add('d-none'); s3.classList.remove('d-none');};
+  document.getElementById('btn-austin').onclick = ()=>{s2.classList.add('d-none'); s4.classList.remove('d-none');};
 
   // Return to map from city slides
   document.getElementById('map-return-3').onclick = ()=>{s3.classList.add('d-none'); s2.classList.remove('d-none');};

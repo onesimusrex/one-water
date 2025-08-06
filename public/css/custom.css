@@ -52,3 +52,18 @@
   background-color:#bd6a04;
   color:#ffffff !important;
 }
+
+/* 🔹 Deep navy blue theme for page backgrounds */
+.bg-deep-navy {
+  background-color: #001f63 !important;
+  color: white;
+}
+
+.bg-deep-navy .material-symbols-outlined,
+.bg-deep-navy .nav-icon .material-symbols-outlined {
+  color: white !important;
+}
+
+.bg-deep-navy .text-muted {
+  color: rgba(255, 255, 255, 0.7) !important;
+}

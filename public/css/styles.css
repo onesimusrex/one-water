@@ -226,6 +226,24 @@ h6 {
   transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
+/* ------------------------------------------------------------------ */
+/*  Embossed depth effect for nav/back/next buttons across the site   */
+/* ------------------------------------------------------------------ */
+.nav-btn{
+  /* keep any size styles already applied elsewhere */
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 200px;                 /* pill‑shape like .slide-btn */
+  box-shadow: 6px 6px 12px #c5c5c5,    /* light outer shadow */
+              -6px -6px 12px #ffffff;  /* highlight for raised look */
+}
+.nav-btn:active{
+  box-shadow: inset 4px 4px 12px #c5c5c5,    /* pressed‑in effect */
+              inset -4px -4px 12px #ffffff;
+}
+
 @media (min-width: 576px) {
   .slide-btn {
     font-size: 16px;

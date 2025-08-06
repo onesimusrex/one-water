@@ -32,3 +32,23 @@
     opacity: 0;
     transform: translateY(-50px);
   }
+/* ► Global orange button style (re-used site-wide) */
+.btn-orange{
+  background-color:#f28b2e;
+  color:#ffffff !important;
+  border:none;
+  font-weight:600;
+  padding:.6rem 1.3rem;
+  border-radius:.5rem;
+  transition:background-color .25s ease;
+}
+.btn-orange:hover,
+.btn-orange:focus{
+  background-color:#d97706;
+  color:#ffffff !important;
+  text-decoration:none;
+}
+.btn-orange:active{
+  background-color:#bd6a04;
+  color:#ffffff !important;
+}

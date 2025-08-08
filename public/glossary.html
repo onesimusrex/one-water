@@ -2,24 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Glossary</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Glossary</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+  <style>
+    body{
+      background-color:#0c2357; /* match Help page background */
+      color:#fff;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+    }
+    .glossary-wrap{
+      width:100%;
+      max-width:1100px;
+      margin: 2.75rem auto 1.25rem; /* a bit more top breathing room */
+      border-radius:0;
+      padding: 1.25rem 1.25rem 1rem;
+    }
+    .water-logo {
+      position:absolute; top:18px; right:28px; width:44px; opacity:.9;
+    }
+    .term{ text-decoration: underline; font-weight:700; }
+    .footnote{
+      color:#cdd7ea;
+      font-style: italic;
+      text-align:center;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 <body>
+  <img src="img/SVG/One-Water-Logo_White.svg" alt="One Water Logo" class="water-logo" />
   <div class="container">
-    <h2>Glossary</h2>
-    <ul>
-      <li><strong>Bayou:</strong> Slow-moving, marshy waterway that helps manage floodwaters (e.g., Buffalo Bayou).</li>
-      <li><strong>Recycled water:</strong> Treated wastewater used for drinking, irrigation, and industry.</li>
-      <li><strong>Resilience:</strong> Ability to recover from natural and human-made challenges.</li>
-      <li><strong>Subsidence:</strong> Sinking of land due to groundwater extraction.</li>
-      <li><strong>Sustainability:</strong> Meeting present needs without compromising future generations.</li>
-      <li><strong>Water Equity:</strong> Fair inclusion in access, resilience, and water decision-making.</li>
-    </ul>
-    <a href="index.html">← Return Home</a>
+    <div class="glossary-wrap">
+      <h1 class="fw-bold mb-3">Glossary</h1>
+      <p><span class="term">Bayou:</span> Slow-moving, marshy waterway that plays a crucial role in the city's drainage system, helping to manage floodwaters during heavy rains (e.g., Buffalo Bayou).</p>
+      <p><span class="term">Recycled water:</span> Treated wastewater that can be used for beneficial purposes, such as drinking water, irrigation, and industrial processes.</p>
+      <p><span class="term">Resilience:</span> Ability to adapt to and quickly recover from various stresses and disruptions, including natural disasters and human-made challenges.</p>
+      <p><span class="term">Subsidence:</span> Gradual sinking or caving in of an area of land due to natural processes or human activities, such as unsustainable groundwater extraction.</p>
+      <p><span class="term">Sustainability:</span> Development that meets the needs of the present without compromising the ability of future generations to meet their own needs. Sustainability considers social, economic and environmental needs.</p>
+      <p class="mb-0"><span class="term">Water Equity:</span> Just and fair inclusion that occurs when all communities have access to clean, safe, affordable drinking water and wastewater services; are resilient in the face of floods, drought, and other climate risks; have a role in decision-making processes related to water management in their communities; and share in the economic, social, and environmental benefits of water systems.</p>
+    </div>
+    <div class="text-start mt-3">
+      <button id="glossary-back" class="btn btn-orange btn-lg nav-btn" aria-label="Previous">
+        <span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous
+      </button>
+    </div>
+    <div class="footnote">Click anywhere to return to the module.</div>
   </div>
+  <script>
+    (function(){
+      function goBack(){
+        if (history.length > 1) { history.back(); }
+        else { window.location.href = 'key_concepts_of_one_water.html'; }
+      }
+      document.body.addEventListener('click', function(e){
+        if (e.target.closest('#glossary-back') || e.target.closest('.glossary-wrap')) return;
+        goBack();
+      });
+      document.getElementById('glossary-back').addEventListener('click', function(e){
+        e.stopPropagation();
+        goBack();
+      });
+    })();
+  </script>
 </body>
 </html>

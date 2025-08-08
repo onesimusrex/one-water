@@ -60,6 +60,21 @@
       line-height: 1;
     }
 
+    /* Overlay text: slightly smaller to avoid crowding — no layout changes */
+    .image-overlay-wrapper .overlay-content { 
+      overflow: visible; /* ensure no scrollbars in the overlay */
+    }
+    .image-overlay-wrapper .overlay-content h5{
+      /* was: clamp(1rem, 0.6vw + 0.85rem, 1.2rem) */
+      font-size: clamp(0.92rem, 0.5vw + 0.78rem, 1.08rem);
+    }
+    .image-overlay-wrapper .overlay-content p{
+      /* was: clamp(0.95rem, 0.4vw + 0.82rem, 1.05rem) */
+      font-size: clamp(0.88rem, 0.35vw + 0.74rem, 0.98rem);
+      line-height: 1.4;  /* was 1.45 */
+      margin-bottom: .45rem; /* was .5rem */
+    }
+
   </style>
 </head>
 
@@ -69,8 +84,8 @@
     <nav class="d-flex justify-content-between">
       <a href="home.html" class="nav-icon"><span class="material-symbols-outlined">home</span></a>
       <div>
-        <a href="help.html" class="nav-icon"><span class="material-symbols-outlined">help</span></a>
-        <a href="glossary.html" class="nav-icon"><span class="material-symbols-outlined">dictionary</span></a>
+        <a href="09_help_dark_blue.html" class="nav-icon"><span class="material-symbols-outlined">help</span></a>
+        <a href="glossary.html" class="nav-icon"><span class="material-symbols-outlined">menu_book</span></a>
       </div>
       <img src="img/SVG/One-Water-Logo_White.svg" alt="One Water Logo" class="logo">
     </nav>
@@ -79,7 +94,7 @@
   <!-- 🌀 Swup page‑transition container -->
   <div id="swup" class="transition-fade">
     <article>
-      <section class="container-lg text-white py-5">
+      <section class="container-lg text-white py-5 mobile-comfy">
 
         <!-- Page Heading -->
         <div class="row justify-content-center mb-4">
@@ -96,15 +111,46 @@
           </div>
         </div>
 
-        <!-- ✨ Interactive Hero Image -->
-        <div class="row justify-content-center">
+        <!-- Mobile‑only problem & solution (no hero image) -->
+        <div id="mobile-intro" class="row justify-content-center d-block d-lg-none mt-4 px-2">
+          <div class="col-12 col-xl-10 text-center">
+            <h5 class="text-info fw-bold mb-2">Problem:</h5>
+            <p class="mb-3">
+              Over‑extraction of groundwater in the early 1970s caused significant
+              subsidence in the Houston‑Galveston region. Some areas lost as much
+              as twelve to thirteen feet of elevation.
+            </p>
+            <div class="my-2 text-white fs-1" aria-hidden="true">&#8595;</div>
+            <h5 class="text-info fw-bold mb-2">Regional Partnership &amp; Solution:</h5>
+            <p class="mb-3">
+              The Harris‑Galveston Subsidence District was established in 1975
+              to develop ways to reduce reliance on groundwater supply. This helps
+              protect lives and property from the impacts of future subsidence,
+              such as flooding and building damage.
+            </p>
+
+            <div class="text-center my-3">
+              <img src="img/subsidence_district_logo.png"
+                   alt="Harris‑Galveston Subsidence District logo"
+                   class="bg-white p-2 rounded-2 shadow"
+                   style="max-height: 90px;" />
+            </div>
+            <!-- Mobile-only Next button to advance to Slide 2 -->
+            <div class="d-flex justify-content-end align-items-center mt-3">
+              <button id="next-btn-mobile" class="btn btn-orange btn-lg nav-btn" aria-label="Next slide">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
+            </div>
+          </div>
+        </div>
+
+       <!-- ✨ Interactive Hero Image -->
+        <div class="row justify-content-center d-none d-lg-flex">
           <div class="col-12 col-xl-10">
             <!-- Wrapper toggles 'active' class on click -->
             <div class="image-overlay-wrapper rounded-4 border border-4 border-warning">
               <!-- Main image -->
               <img src="img/resilience_and_sustainability_1.jpeg"
                    alt="A vegetated stormwater channel in Houston illustrating resilient and sustainable infrastructure"
-                   class="img-fluid w-100 hero-img rounded-4" />
+                   class="img-fluid w-100 hero-img rounded-4 d-none d-lg-block" />
 
                     <!-- Hidden overlay content (REPLACE this whole block) -->
                     <div class="overlay-content rounded-4">
@@ -149,11 +195,9 @@
 
             </div><!-- /image-overlay-wrapper -->
 
-            <!-- Reliable next button below the hero image -->
-            <div class="text-end mt-3">
-              <button id="next-btn" class="btn btn-primary btn-lg d-none nav-btn" aria-label="Next slide">
-                &#10140;
-              </button>
+            <!-- Page navigation: Next (right only) -->
+            <div class="d-flex justify-content-end align-items-center mt-3">
+              <button id="next-btn" class="btn btn-orange btn-lg d-none nav-btn" aria-label="Next slide">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
             </div>
           </div>
         </div>
@@ -165,7 +209,7 @@
             <div class="col-md-5 text-center">
               <img src="img/layered_diamonds.png"
                    alt="Layered diamond graphic illustrating types of resilience"
-                   class="img-fluid" style="max-width: 480px;">
+                   class="img-fluid" >
             </div>
             <!-- Bullet list -->
             <div class="col-md-7">
@@ -188,10 +232,10 @@
               </ul>
             </div>
           </div>
-          <div class="text-start mt-3">
-            <button id="back-btn" class="btn btn-secondary btn-lg nav-btn" aria-label="Back to hero slide">
-              &#11013;
-            </button>
+          <!-- Page navigation: Previous (left) / Next (right) -->
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <button id="back-btn" class="btn btn-orange btn-lg nav-btn" aria-label="Back to hero slide"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
+            <button id="next-btn-ghost" class="btn btn-orange btn-lg invisible" tabindex="-1" aria-hidden="true">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
           </div>
           <p class="small text-center fst-italic mt-4">
             Click anywhere to return to the main topic.
@@ -229,8 +273,10 @@
     document.addEventListener('DOMContentLoaded', () => {
       const wrapper     = document.querySelector('.image-overlay-wrapper');
       const nextBtn     = document.getElementById('next-btn');
+      const nextBtnMobile = document.getElementById('next-btn-mobile');
       const nextContent = document.getElementById('next-content');
       const backBtn     = document.getElementById('back-btn');
+      const mobileIntro = document.getElementById('mobile-intro');
 
       if (!wrapper || !nextBtn || !nextContent || !backBtn) return;
 
@@ -245,15 +291,31 @@
       nextBtn.addEventListener('click', (e) => {
         e.stopPropagation();                       // do not re‑toggle overlay
         wrapper.parentElement.classList.add('d-none'); // hide hero row
+        if (mobileIntro) mobileIntro.classList.add('d-none'); // also hide mobile-only intro on slide two
         nextContent.classList.remove('d-none');        // show new slide
         nextBtn.classList.add('d-none');               // hide button
       });
+
+      // Advance from mobile intro to second content block
+      if (nextBtnMobile) {
+        nextBtnMobile.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (wrapper && wrapper.parentElement) {
+            wrapper.parentElement.classList.add('d-none'); // hide hero row (already hidden on mobile, safe no-op)
+          }
+          if (mobileIntro) mobileIntro.classList.add('d-none');
+          nextContent.classList.remove('d-none');
+          if (nextBtn) nextBtn.classList.add('d-none');
+          nextBtnMobile.classList.add('d-none');
+        });
+      }
 
       /* Go back to hero slide */
       backBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         nextContent.classList.add('d-none');          // hide second slide
         wrapper.parentElement.classList.remove('d-none'); // show hero row
+        if (mobileIntro) mobileIntro.classList.remove('d-none'); // show mobile-only intro again
         wrapper.classList.remove('active');           // reset overlay
         nextBtn.classList.add('d-none');              // hide next button
         // back button is inside nextContent; hiding the container is enough

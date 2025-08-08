@@ -32,15 +32,15 @@
       <nav class="d-flex justify-content-between">
         <a href="home.html" class="nav-icon"><span class="material-symbols-outlined">home</span></a>
         <div>
-          <a href="help.html" class="nav-icon"><span class="material-symbols-outlined">help</span></a>
-          <a href="glossary.html" class="nav-icon"><span class="material-symbols-outlined">dictionary</span></a>
+          <a href="09_help_dark_blue.html" class="nav-icon"><span class="material-symbols-outlined">help</span></a>
+          <a href="glossary.html" class="nav-icon"><span class="material-symbols-outlined">menu_book</span></a>
         </div>
         <img src="img/SVG/One-Water-Logo_White.svg" alt="One Water Logo" class="logo">
       </nav>
     </header>
 
     <!-- BEGIN slide content -->
-    <div class="container-lg text-white py-5">
+    <div class="container-lg text-white py-5 mobile-comfy">
 
       <!-- === SLIDE 1 – overview === -->
       <section id="slide1">
@@ -58,20 +58,16 @@
 
           <!-- Graphic with magnifying glass -->
           <div class="col-md-7 text-center position-relative">
-            <img src="img/interconnected_water_system_1.jpg"
-                 alt="Urban water cycle diagram"
-                 class="img-fluid rounded-circle" style="max-width: 600px;">
-            <img src="img/magnifying_glass_icon_orange.png"
-                 alt=""
-                 class="position-absolute" style="width: 90px; left: 15%; bottom: -30px;">
+            <div class="circle-img-wrap">
+              <img src="img/interconnected_water_system_1.jpg" alt="Urban water cycle diagram">
+            </div>
+            <img src="img/magnifying_glass_icon_orange.png" alt="" class="overlay-lens">
           </div>
         </div>
 
         <!-- Next button -->
         <div class="text-end mt-4">
-          <button id="next-btn-1" class="btn btn-primary btn-lg nav-btn" aria-label="Next">
-            &#10140;
-          </button>
+          <button id="next-btn-1" class="btn btn-orange btn-lg nav-btn" aria-label="Next">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
         </div>
 
         <p class="small text-center fst-italic mt-4">
@@ -88,7 +84,7 @@
           <div class="col-md-5 text-center">
             <img src="img/interconnected_water_system_2.png"
                  alt="Highlighted sector showing runoff"
-                 class="img-fluid rounded-4" style="max-width: 600px;">
+                 class="img-fluid rounded-4" >
           </div>
 
           <!-- Cause & Effect -->
@@ -109,12 +105,8 @@
 
         <!-- Nav buttons -->
         <div class="d-flex justify-content-between mt-4">
-          <button id="back-btn-2" class="btn btn-secondary btn-lg nav-btn" aria-label="Back">
-            &#11013;
-          </button>
-          <button id="next-btn-2" class="btn btn-primary btn-lg nav-btn" aria-label="Next">
-            &#10140;
-          </button>
+          <button id="back-btn-2" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
+          <button id="next-btn-2" class="btn btn-orange btn-lg nav-btn" aria-label="Next">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
         </div>
 
         <p class="small text-center fst-italic mt-4">
@@ -160,22 +152,24 @@
           <div class="col-lg-6">
             <img src="img/interconnected_water_system_3.png"
                  alt="Revitalized bayou corridor"
-                 class="img-fluid w-75 rounded-4 mb-3">
+                 class="img-fluid w-75 w-100-mobile rounded-4 mb-3">
             <img src="img/interconnected_water_system_4.png"
                  alt="Green infrastructure example"
-                 class="img-fluid w-75 rounded-4">
+                 class="img-fluid w-75 w-100-mobile rounded-4">
           </div>
         </div>
 
         <!-- Back + home buttons -->
         <div class="d-flex justify-content-between mt-4">
-          <button id="back-btn-3" class="btn btn-secondary btn-lg nav-btn" aria-label="Back">
-            &#11013;
-          </button>
-          <a href="/key_concepts_of_one_water.html"
+          <button id="back-btn-3" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
+          <a href="home.html"
              class="btn btn-outline-light btn-lg nav-btn"
-             aria-label="Back to Key Concepts">
-            <span class="material-symbols-outlined align-middle">home</span>
+             aria-label="Home">
+            <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3" opacity="0.9"/>
+              <path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 3v6h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </a>
         </div>
 

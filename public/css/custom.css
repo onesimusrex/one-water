@@ -115,37 +115,58 @@
   .mobile-comfy .lead{ margin-bottom:1rem !important; }
   .mobile-comfy .btn{ margin-top:.5rem; }
   .mobile-comfy img{ display:block; margin-left:auto; margin-right:auto; }
+  /* One Water – Slide 2 buttons on phones */
+  .city-buttons{ flex-direction: column !important; align-items: stretch !important; gap: .75rem !important; }
+  .city-buttons .btn, .city-buttons .btn-orange, .city-buttons .nav-btn{ width: 100% !important; }
 }
 
 /* ===================== One Water Houston theme ===================== */
+
+/* Houston thumbnails: thicker orange border and larger corner radius to match the slide */
+.houston-thumb{
+  display:block;
+  width:100%;
+  height:auto;
+  box-sizing:border-box;
+  border: 12px solid #f28b2e;   /* closer to slide’s orange */
+  border-radius: 32px;          /* rounder corners like the original */
+}
 /* Pale sky page background like the reference slide */
 .bg-sky { background-color: #dce7f3 !important; }
+/* One Water mini-cities: ensure body text matches heading navy */
+.bg-sky .text-dark, 
+.bg-sky .text-body { color: #0b2a55 !important; }
 /* Deep navy text utility for headings on light backgrounds */
 .text-navy { color: #0b2a55 !important; }
+/* Ensure links inside navy text containers match the heading color */
+.text-navy a { color: #0b2a55 !important; }
+.text-navy a:hover { color: #082040 !important; }
 /* Navy tile background used by the two lower tiles */
 .bg-navy { background-color: #3e5687 !important; color:#ffffff !important; }
 /* Teal tile background used by the Phase 1 tile */
 .bg-teal { background-color: #6ed0dd !important; }
 /* Rounded, slightly elevated tile style to match the mock */
 .card-owh {
-  border-radius: 0.85rem;           /* chunky corners like the slide */
+  border-radius: 1.1rem;                    /* closer to the slide’s rounded boxes */
   padding: 1rem 1.25rem;            /* a bit more breathing room */
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.18), 0 .125rem .25rem rgba(0,0,0,.12);
-  border: 2px solid rgba(0,0,0,.05);/* subtle edge like the artwork */
+  border: 3px solid rgba(11,42,85,.18);     /* subtle navy outline like the mock */
 }
 .card-owh h6{ font-weight:700; margin-bottom:.25rem; }
 .card-owh p{ margin-bottom:0; }
 
 /* ✅ Enforce tile backgrounds on One Water Houston */
 .card-owh.bg-teal{
-  background:#6ed0dd !important;            /* teal fill */
-  background-color:#6ed0dd !important;
-  color:#0b2a55 !important;                  /* navy text */
+  background:#49c7d1 !important;          /* more cyan like the slide */
+  background-color:#49c7d1 !important;
+  color:#0b2a55 !important;               /* dark navy text per slide */
+  border-color:#0b2a55 !important;        /* darker teal/navy outline */
 }
 .card-owh.bg-navy{
-  background:#3e5687 !important;             /* deep navy fill */
-  background-color:#3e5687 !important;
-  color:#ffffff !important;                  /* white text */
+  background:#5b77a8 !important;          /* lighter blue like the slide tiles */
+  background-color:#5b77a8 !important;
+  color:#ffffff !important;
+  border-color:#2f4f85 !important;        /* slightly darker blue outline */
 }
 .card-owh.bg-navy h6,
 .card-owh.bg-navy p,
@@ -176,8 +197,13 @@ img, svg, video { max-width: 100%; height: auto; }
 /* Opt-in: make something 100% width on phones (use alongside w-75 etc.) */
 @media (max-width: 576px){
   .w-100-mobile { width: 100% !important; }
+  /* Override mobile-comfy image centering for specific images */
+  .img-left-mobile { margin-left: 0 !important; margin-right: 0 !important; display:block; }
   /* iOS/mobile fix: avoid jitter with fixed backgrounds */
   .thankyou-bg { background-attachment: scroll; }
+  /* One Water – Slide 2 buttons on phones */
+  .city-buttons{ flex-direction: column !important; align-items: stretch !important; gap: .75rem !important; }
+  .city-buttons .btn, .city-buttons .btn-orange, .city-buttons .nav-btn{ width: 100% !important; }
 }
 
 /* Interconnected Water Systems: responsive magnifying glass overlay */
@@ -215,3 +241,53 @@ img, svg, video { max-width: 100%; height: auto; }
   .w-60-mobile { width: 60% !important; }
   .w-36-mobile { width: 36% !important; }
 }
+/* ====================== TYPOGRAPHY UTILITIES (scoped) ====================== */
+/* Removed global body/heading overrides so pages keep the original typography
+   defined in css/styles.css. These utilities are safe and non-invasive. */
+
+:root{
+  --lh-body: 1.6;
+  --lh-heading: 1.2;
+}
+
+/* Deep-navy pages: readable link colors */
+.bg-deep-navy a{ color:#9bd3ff; }
+.bg-deep-navy a:hover{ color:#cfe9ff; }
+
+/* Utilities only (no global font overrides) */
+.text-balance{ text-wrap: balance; }
+.text-measure{ max-width: 65ch; }
+
+/* Restart icon: white, flipped to opposite direction, slightly thicker stroke */
+.icon-restart{
+  width: 1.35em;
+  height: 1.35em;
+  color: #ffffff;                 /* uses currentColor for stroke */
+  transform: scaleX(-1);          /* flip direction */
+  transform-origin: 50% 50%;
+}
+/* Nudge stroke width for all child paths/shapes inside the SVG */
+.icon-restart, .icon-restart *{ stroke-width: 2.75px !important; }
+
+/* Flat outline nav button with DARK shadow on dark pages */
+.btn-outline-light.nav-btn{
+  color: #ffffff !important;
+  /* border-color: rgba(255,255,255,.9) !important; */
+  border: none;
+  background-color: transparent !important;  /* remove any white glow */
+  /* dialed back shadow by ~25% */
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.24), 0 .125rem .25rem rgba(0,0,0,.16) !important;
+}
+.btn-outline-light.nav-btn:hover,
+.btn-outline-light.nav-btn:focus{
+  /* slightly stronger than rest state, still lighter than before */
+  box-shadow: 0 .6rem 1.2rem rgba(0,0,0,.30), 0 .2rem .4rem rgba(0,0,0,.22) !important;
+}
+
+/* Remove the dotted ring stroke on the restart icon's circle only */
+.icon-restart circle{
+  stroke: none !important;
+  stroke-dasharray: none !important;
+}
+/* Arrow icons inside buttons: consistent sizing and alignment */
+.btn .material-symbols-outlined{ font-size:1.25em; line-height:1; vertical-align:-0.15em; }

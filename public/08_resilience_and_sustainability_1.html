@@ -60,6 +60,21 @@
       line-height: 1;
     }
 
+    /* Overlay text: slightly smaller to avoid crowding — no layout changes */
+    .image-overlay-wrapper .overlay-content { 
+      overflow: visible; /* ensure no scrollbars in the overlay */
+    }
+    .image-overlay-wrapper .overlay-content h5{
+      /* was: clamp(1rem, 0.6vw + 0.85rem, 1.2rem) */
+      font-size: clamp(0.92rem, 0.5vw + 0.78rem, 1.08rem);
+    }
+    .image-overlay-wrapper .overlay-content p{
+      /* was: clamp(0.95rem, 0.4vw + 0.82rem, 1.05rem) */
+      font-size: clamp(0.88rem, 0.35vw + 0.74rem, 0.98rem);
+      line-height: 1.4;  /* was 1.45 */
+      margin-bottom: .45rem; /* was .5rem */
+    }
+
   </style>
 </head>
 
@@ -69,8 +84,8 @@
     <nav class="d-flex justify-content-between">
       <a href="home.html" class="nav-icon"><span class="material-symbols-outlined">home</span></a>
       <div>
-        <a href="help.html" class="nav-icon"><span class="material-symbols-outlined">help</span></a>
-        <a href="glossary.html" class="nav-icon"><span class="material-symbols-outlined">dictionary</span></a>
+        <a href="09_help_dark_blue.html" class="nav-icon"><span class="material-symbols-outlined">help</span></a>
+        <a href="glossary.html" class="nav-icon"><span class="material-symbols-outlined">menu_book</span></a>
       </div>
       <img src="img/SVG/One-Water-Logo_White.svg" alt="One Water Logo" class="logo">
     </nav>
@@ -119,6 +134,10 @@
                    alt="Harris‑Galveston Subsidence District logo"
                    class="bg-white p-2 rounded-2 shadow"
                    style="max-height: 90px;" />
+            </div>
+            <!-- Mobile-only Next button to advance to Slide 2 -->
+            <div class="d-flex justify-content-end align-items-center mt-3">
+              <button id="next-btn-mobile" class="btn btn-orange btn-lg nav-btn" aria-label="Next slide">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
             </div>
           </div>
         </div>
@@ -178,7 +197,7 @@
 
             <!-- Page navigation: Next (right only) -->
             <div class="d-flex justify-content-end align-items-center mt-3">
-              <button id="next-btn" class="btn btn-orange btn-lg d-none nav-btn" aria-label="Next slide">Next</button>
+              <button id="next-btn" class="btn btn-orange btn-lg d-none nav-btn" aria-label="Next slide">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
             </div>
           </div>
         </div>
@@ -215,8 +234,8 @@
           </div>
           <!-- Page navigation: Previous (left) / Next (right) -->
           <div class="d-flex justify-content-between align-items-center mt-3">
-            <button id="back-btn" class="btn btn-orange btn-lg nav-btn" aria-label="Back to hero slide">Previous</button>
-            <button id="next-btn-ghost" class="btn btn-orange btn-lg invisible" tabindex="-1" aria-hidden="true">Next</button>
+            <button id="back-btn" class="btn btn-orange btn-lg nav-btn" aria-label="Back to hero slide"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
+            <button id="next-btn-ghost" class="btn btn-orange btn-lg invisible" tabindex="-1" aria-hidden="true">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
           </div>
           <p class="small text-center fst-italic mt-4">
             Click anywhere to return to the main topic.
@@ -254,6 +273,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const wrapper     = document.querySelector('.image-overlay-wrapper');
       const nextBtn     = document.getElementById('next-btn');
+      const nextBtnMobile = document.getElementById('next-btn-mobile');
       const nextContent = document.getElementById('next-content');
       const backBtn     = document.getElementById('back-btn');
       const mobileIntro = document.getElementById('mobile-intro');
@@ -275,6 +295,20 @@
         nextContent.classList.remove('d-none');        // show new slide
         nextBtn.classList.add('d-none');               // hide button
       });
+
+      // Advance from mobile intro to second content block
+      if (nextBtnMobile) {
+        nextBtnMobile.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (wrapper && wrapper.parentElement) {
+            wrapper.parentElement.classList.add('d-none'); // hide hero row (already hidden on mobile, safe no-op)
+          }
+          if (mobileIntro) mobileIntro.classList.add('d-none');
+          nextContent.classList.remove('d-none');
+          if (nextBtn) nextBtn.classList.add('d-none');
+          nextBtnMobile.classList.add('d-none');
+        });
+      }
 
       /* Go back to hero slide */
       backBtn.addEventListener('click', (e) => {

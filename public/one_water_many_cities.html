@@ -43,6 +43,17 @@
       border-radius:.5rem;
     } */
     .city-btn:hover,.city-btn:focus{background:#d97706;color:#fff;}
+
+    @media (max-width: 576px){
+      .city-buttons .nav-btn{
+        font-size: 1.125rem;    /* slightly smaller text on phones */
+        line-height: 1.2;
+        padding: .75rem 1rem;   /* trim padding so buttons aren’t gigantic */
+        min-width: 0;           /* undo the nav-btn min sizing on mobile */
+        min-height: 0;
+        white-space: normal;    /* allow lines to wrap nicely */
+      }
+    }
   </style>
 
 </head>
@@ -53,14 +64,14 @@
       <nav class="d-flex justify-content-between">
         <a href="home.html" class="nav-icon"><span class="material-symbols-outlined">home</span></a>
         <div>
-          <a href="help.html" class="nav-icon"><span class="material-symbols-outlined">help</span></a>
-          <a href="glossary.html" class="nav-icon"><span class="material-symbols-outlined">dictionary</span></a>
+          <a href="09_help_dark_blue.html" class="nav-icon"><span class="material-symbols-outlined">help</span></a>
+          <a href="glossary.html" class="nav-icon"><span class="material-symbols-outlined">menu_book</span></a>
         </div>
         <img src="img/SVG/One-Water-Logo_White.svg" alt="One Water Logo" class="logo">
       </nav>
     </header>
 
-    <div class="container-lg text-dark py-5 mobile-comfy">
+    <div class="container-lg text-navy py-5 mobile-comfy">
 
       <!-- === SLIDE 1 : overview flyer ======================================= -->
       <section id="slide1">
@@ -83,13 +94,13 @@
           <div class="col-md-6 text-center">
             <img src="img/one_water_many_cities_1.png"
                  alt="One Water flyer explaining interconnectivity, engagement, sustainability"
-                 class="img-fluid rounded-4 shadow" style="max-width:600px;">
+                 class="img-fluid rounded-4 shadow w-100-mobile img-left-mobile" style="max-width:600px;">
           </div>
         </div>
 
         <!-- Next arrow -->
         <div class="text-end mt-4">
-          <button id="next-btn-1" class="btn btn-orange btn-lg nav-btn" aria-label="Next">Next</button>
+          <button id="next-btn-1" class="btn btn-orange btn-lg nav-btn" aria-label="Next">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
         </div>
 
         <p class="small text-center fst-italic mt-4">
@@ -104,10 +115,10 @@
         <div class="position-relative text-center">
           <img src="img/map_1.png"
                alt="Map of USA with highlighted cities"
-               class="img-fluid" style="max-width:800px;">
+               class="img-fluid rounded-4  w-100-mobile">
         </div>
         <!-- City buttons -->
-        <div class="d-flex justify-content-center gap-3 mt-3">
+        <div class="d-flex justify-content-center gap-3 mt-3 city-buttons">
           <!-- <button id="btn-la"     class="city-btn">Los Angeles, CA</button>
           <button id="btn-austin" class="city-btn">Austin, TX</button> -->
           <button id="btn-la"     class="btn-orange nav-btn">Los Angeles, CA</button>
@@ -116,11 +127,15 @@
 
         <!-- Back + Home nav -->
         <div class="d-flex justify-content-between mt-4">
-          <button id="back-btn-2" class="btn btn-orange btn-lg nav-btn" aria-label="Back">Previous</button>
-          <a href="/key_concepts_of_one_water.html"
+          <button id="back-btn-2" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
+          <a href="home.html"
              class="btn btn-outline-light btn-lg nav-btn"
-             aria-label="Back to Key Concepts">
-            <span class="material-symbols-outlined align-middle">home</span>
+             aria-label="Home">
+            <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3" opacity="0.9"/>
+              <path d="M20 12a 8 8 0 1 1 -2.34 -5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 3 v6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </a>
         </div>
 
@@ -166,11 +181,15 @@
         </div>
 
         <div class="d-flex justify-content-between mt-4">
-          <button id="map-return-3" class="btn btn-orange btn-lg nav-btn" aria-label="Back to map">Previous</button>
-          <a href="/key_concepts_of_one_water.html"
+          <button id="map-return-3" class="btn btn-orange btn-lg nav-btn" aria-label="Back to map"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
+          <a href="home.html"
              class="btn btn-outline-light btn-lg nav-btn"
-             aria-label="Back to Key Concepts">
-            <span class="material-symbols-outlined align-middle">home</span>
+             aria-label="Home">
+            <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3" opacity="0.9"/>
+              <path d="M20 12a 8 8 0 1 1 -2.34 -5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 3 v6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </a>
         </div>
 
@@ -212,11 +231,15 @@
         </div>
 
         <div class="d-flex justify-content-between mt-4">
-          <button id="map-return-4" class="btn btn-orange btn-lg nav-btn" aria-label="Back to map">Previous</button>
-          <a href="/key_concepts_of_one_water.html"
+          <button id="map-return-4" class="btn btn-orange btn-lg nav-btn" aria-label="Back to map"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
+          <a href="home.html"
              class="btn btn-outline-light btn-lg nav-btn"
-             aria-label="Back to Key Concepts">
-            <span class="material-symbols-outlined align-middle">home</span>
+             aria-label="Home">
+            <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3" opacity="0.9"/>
+              <path d="M20 12a 8 8 0 1 1 -2.34 -5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 3 v6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </a>
         </div>
 

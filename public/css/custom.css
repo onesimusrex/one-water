@@ -262,32 +262,48 @@ img, svg, video { max-width: 100%; height: auto; }
 .icon-restart{
   width: 1.35em;
   height: 1.35em;
-  color: #ffffff;                 /* uses currentColor for stroke */
+  color: #ffffff;                 /* arrow stays white via currentColor stroke */
   transform: scaleX(-1);          /* flip direction */
   transform-origin: 50% 50%;
+  /* no background here; the BUTTON supplies the orange disc */
+  border-radius: 0;
+  padding: 0;
 }
 /* Nudge stroke width for all child paths/shapes inside the SVG */
-.icon-restart, .icon-restart *{ stroke-width: 2.75px !important; }
+.icon-restart, .icon-restart *{ stroke-width: 2px !important; }
 
 /* Flat outline nav button with DARK shadow on dark pages */
 .btn-outline-light.nav-btn{
   color: #ffffff !important;
-  /* border-color: rgba(255,255,255,.9) !important; */
   border: none;
-  background-color: transparent !important;  /* remove any white glow */
-  /* dialed back shadow by ~25% */
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.24), 0 .125rem .25rem rgba(0,0,0,.16) !important;
+  background-color: #f28b2e !important;   /* solid orange disc */
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* slightly softened shadow */
+  box-shadow: 0 .45rem .9rem rgba(0,0,0,.22), 0 .1rem .2rem rgba(0,0,0,.18) !important;
 }
 .btn-outline-light.nav-btn:hover,
 .btn-outline-light.nav-btn:focus{
+  background-color:#d97706 !important;
   /* slightly stronger than rest state, still lighter than before */
   box-shadow: 0 .6rem 1.2rem rgba(0,0,0,.30), 0 .2rem .4rem rgba(0,0,0,.22) !important;
 }
 
-/* Remove the dotted ring stroke on the restart icon's circle only */
+/* Hide the inner SVG circle so we don't get an orange dot inside a white ring.
+   The orange disc now comes from the svg's background set above. */
 .icon-restart circle{
-  stroke: none !important;
-  stroke-dasharray: none !important;
+  display: none !important;
 }
+
+.icon-restart path{
+  stroke: #ffffff !important;      /* white arrow stroke */
+  fill: none !important;           /* ensure arrow is not filled */
+}
+
 /* Arrow icons inside buttons: consistent sizing and alignment */
 .btn .material-symbols-outlined{ font-size:1.25em; line-height:1; vertical-align:-0.15em; }

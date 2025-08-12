@@ -28,6 +28,39 @@
       padding:5rem 1rem;
       backdrop-filter:blur(3px);
     }
+
+    /* Full-bleed Thank You slide to match the reference */
+    .thankyou-section{
+      position: relative;
+      min-height: 100vh;
+      background: url('img/houston_skyline_blur.jpg') center / cover no-repeat fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 1rem 4rem;
+      color: #0b2a55; /* dark navy like headings */
+    }
+    .thankyou-section h1{
+      font-weight: 800;
+      margin-bottom: .5rem;
+    }
+    .thankyou-section p{
+      max-width: 38rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.35;
+    }
+    .thankyou-section .refs{
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      text-align: left;
+      color: rgba(11,42,85,.95);
+      font-size: .875rem;
+      max-width: 48rem;
+    }
+    .thankyou-section .refs li{ margin-bottom: .25rem; }
   </style>
 </head>
 
@@ -179,18 +212,19 @@
         </section>
 
         <!-- ========== SLIDE 4 – Thank You ================================ -->
-        <section id="slide4" class="d-none text-center">
-          <section class="thankyou-bg rounded-4 shadow text-white">
-            <ol class="small mb-3 text-start opacity-75" style="max-width:640px">
+        <section id="slide4" class="d-none">
+          <section class="thankyou-section">
+            <ol class="refs mb-0">
               <li>City of Los Angeles. <em>One Water LA 2040 Plan</em>, Volume&nbsp;1, Summary Report, April&nbsp;2018.</li>
               <li>Green Portal. <em>Alleys – From Grey Alleys to Green Alleys</em>.</li>
               <li>City of Austin. <em>Reuse in Water Forward</em>.</li>
             </ol>
-
-            <h1 class="fw-bold display-5">Thank&nbsp;you!</h1>
-            <p class="fs-4 mb-4">You can return to this module at any time on the One Water Houston website.</p>
-
-            <a href="home.html" class="btn btn-warning btn-lg px-5" aria-label="Exit module">Exit</a>
+            <h1 class="display-5">Thank&nbsp;you!</h1>
+            <p class="fs-4 mb-3">
+              You can return to this module at any time<br>
+              on the One Water Houston website.
+            </p>
+            <a href="home.html" class="btn btn-orange btn-lg px-5" aria-label="Exit module">Exit</a>
           </section>
         </section>
 

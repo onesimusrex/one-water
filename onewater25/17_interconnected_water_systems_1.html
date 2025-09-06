@@ -54,6 +54,9 @@
               natural water cycle — creating an
               <span class="fw-bold fst-italic">urban water cycle</span>.
             </p>
+            <p class="fs-5">
+              For example, debris, oil, pesticides, nutrients, or heavy metals can end up in nearby rivers and lakes through rainfall runoff. This can cause increased stress on treatment facilities, debris accumulation and flooding, and reduced water quality.
+            </p>
           </div>
 
           <!-- Graphic with magnifying glass -->
@@ -70,54 +73,15 @@
           <button id="next-btn-1" class="btn btn-orange btn-lg nav-btn" aria-label="Next">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
         </div>
 
-        <p class="small text-center fst-italic mt-4">
+        <!-- <p class="small text-center fst-italic mt-4">
           Click on the magnifying glass to see an example of how parts of the urban water cycle are related.
-        </p>
-      </section>
-
-      <!-- === SLIDE 2 – cause / effect === -->
-      <section id="slide2" class="d-none">
-        <h1 class="display-5 fw-bold mb-4">Interconnected Water Systems</h1>
-
-        <div class="row gy-4 align-items-center">
-          <!-- Cropped graphic -->
-          <div class="col-md-5 text-center">
-            <img src="img/interconnected_water_system_2.png"
-                 alt="Highlighted sector showing runoff"
-                 class="img-fluid rounded-4" >
-          </div>
-
-          <!-- Cause & Effect -->
-          <div class="col-md-7">
-            <h5 class="fw-bold text-info mb-2">Cause:</h5>
-            <p>
-              Debris, oil, pesticides, nutrients and/or heavy metals can end up in
-              nearby rivers and lakes through rainfall runoff.
-            </p>
-            <h5 class="fw-bold text-info mb-2">Effect:</h5>
-            <ul>
-              <li>Increased stress on treatment facilities</li>
-              <li>Debris accumulation and flooding</li>
-              <li>Reduced water quality</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Nav buttons -->
-        <div class="d-flex justify-content-between mt-4">
-          <button id="back-btn-2" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
-          <button id="next-btn-2" class="btn btn-orange btn-lg nav-btn" aria-label="Next">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
-        </div>
-
-        <p class="small text-center fst-italic mt-4">
-          Click anywhere to continue.
-        </p>
+        </p> -->
       </section>
 
       <!-- === SLIDE 3 – Houston opportunities === -->
       <section id="slide3" class="d-none">
         <h1 class="display-5 fw-bold mb-4">Interconnected Water Systems</h1>
-        <p class="mb-4">
+        <p class="fs-5 mb-4">
           Here in Houston, opportunities for positive interconnection might include:
         </p>
 
@@ -162,7 +126,7 @@
         <!-- Back + home buttons -->
         <div class="d-flex justify-content-between mt-4">
           <button id="back-btn-3" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
-          <a href="home.html"
+          <a href="key_concepts_of_one_water.html"
              class="btn btn-outline-light btn-lg nav-btn"
              aria-label="Home">
             <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
@@ -173,9 +137,9 @@
           </a>
         </div>
 
-        <p class="small text-center fst-italic mt-4">
+        <!-- <p class="small text-center fst-italic mt-4">
           Click anywhere to return to the main topic.
-        </p>
+        </p> -->
       </section>
 
     </div><!-- /.container -->
@@ -185,10 +149,10 @@
 <!-- Global Footer (unchanged) -->
 <footer class="pb-3">
     <div class="text-center mt-4">
-      <p class="small text-muted fst-italic mb-0">
+      <!-- <p class="small text-muted fst-italic mb-0">
         Click on the pictures to learn more about each topic.&nbsp;Then, click
         on&nbsp;<span class="material-symbols-outlined align-middle">home</span>&nbsp;to return to the main home page.
-      </p>
+      </p> -->
     </div>
   </footer>
 </div><!-- /#swup -->
@@ -199,26 +163,16 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const slide1 = document.getElementById('slide1');
-    const slide2 = document.getElementById('slide2');
     const slide3 = document.getElementById('slide3');
 
     document.getElementById('next-btn-1').onclick = () => {
       slide1.classList.add('d-none');
-      slide2.classList.remove('d-none');
-    };
-
-    document.getElementById('back-btn-2').onclick = () => {
-      slide2.classList.add('d-none');
-      slide1.classList.remove('d-none');
-    };
-    document.getElementById('next-btn-2').onclick = () => {
-      slide2.classList.add('d-none');
       slide3.classList.remove('d-none');
     };
 
     document.getElementById('back-btn-3').onclick = () => {
       slide3.classList.add('d-none');
-      slide2.classList.remove('d-none');
+      slide1.classList.remove('d-none');
     };
   });
 </script>

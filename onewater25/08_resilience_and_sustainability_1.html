@@ -233,21 +233,30 @@
             </div>
           </div>
           <!-- Page navigation: Previous (left) / Next (right) -->
-          <div class="d-flex justify-content-between align-items-center mt-3">
-            <button id="back-btn" class="btn btn-orange btn-lg nav-btn" aria-label="Back to hero slide"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
-            <button id="next-btn-ghost" class="btn btn-orange btn-lg invisible" tabindex="-1" aria-hidden="true">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
+          <!-- Back + home buttons -->
+          <div class="d-flex justify-content-between mt-4">
+            <button id="back-btn" class="btn btn-orange btn-lg nav-btn" aria-label="Back">
+              <span class="material-symbols-outlined align-middle me-1">arrow_back</span>
+              Previous
+            </button>
+            <a href="key_concepts_of_one_water.html"
+               class="btn btn-outline-light btn-lg nav-btn"
+               aria-label="Home">
+              <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3" opacity="0.9"/>
+                <path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 3v6h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
           </div>
-          <p class="small text-center fst-italic mt-4">
-            Click anywhere to return to the main topic.
-          </p>
         </div>
 
         <!-- Caption -->
         <div class="row">
           <div class="col-12">
-            <p class="small text-center fst-italic mt-3">
+            <!-- <p class="small text-center fst-italic mt-3">
               Click on the picture to learn more about one way Houston is promoting sustainable solutions.
-            </p>
+            </p> -->
           </div>
         </div>
 
@@ -256,11 +265,11 @@
 
     <!-- Global Footer (unchanged) -->
     <footer class="pb-3">
-      <div class="text-center mt-4">
-        <p class="small text-muted fst-italic mb-0">
+      <div class="text-center mt- 4">
+        <!-- <p class="small text-muted fst-italic mb-0">
           Click on the pictures to learn more about each topic.&nbsp;Then, click
           on&nbsp;<span class="material-symbols-outlined align-middle">home</span>&nbsp;to return to the main home page.
-        </p>
+        </p> -->
       </div>
     </footer>
   </div><!-- /#swup -->

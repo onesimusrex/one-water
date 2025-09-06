@@ -147,49 +147,46 @@
 
           <div class="d-flex justify-content-between mt-4">
             <button id="back-2" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
-            <a href="home.html" class="btn btn-outline-light btn-lg nav-btn" aria-label="Home">
+            <button id="return-2" class="btn btn-outline-light btn-lg nav-btn" aria-label="Return to One Water Houston">
               <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                 <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3" opacity="0.9"/>
                 <path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M20 3v6h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </a>
+            </button>
           </div>
 
-          <p class="small text-center fst-italic mt-4">
-            Click anywhere to return to the main topic.
-          </p>
         </section>
 
         <!-- ========== SLIDE 3 – We Need Your Help ======================== -->
         <section id="slide3" class="d-none">
           <h1 class="slide-title2 mb-4">We Need Your Help!</h1>
 
-          <p>Community input is key to a successful One Water Houston plan.</p>
+          <p class="fs-5 text-navy">Community input is key to a successful One Water Houston plan.</p>
 
           <ul class="list-unstyled fs-5">
             <li class="d-flex align-items-start mb-3">
               <span class="material-symbols-outlined me-3 fs-2">edit_square</span>
               <span>Share your thoughts via the
-                <a href="https://houston.gov/onewater/survey" target="_blank" class="link-orange">
+                <a href="https://onewaterhouston.org/survey" target="_blank" class="link-orange">
                   One Water Houston Survey</a>
               </span>
             </li>
 
             <li class="d-flex align-items-start mb-3">
               <span class="material-symbols-outlined me-3 fs-2">event</span>
-              <span>View <a href="https://houston.gov/onewater/events" target="_blank" class="link-orange">upcoming events</a></span>
+              <span>View <a href="https://onewaterhouston.org/events" target="_blank" class="link-orange">upcoming events</a></span>
             </li>
 
             <li class="d-flex align-items-start mb-3">
               <span class="material-symbols-outlined me-3 fs-2">travel_explore</span>
-              <span>Visit our <a href="https://houston.gov/onewater/virtual-open-house" target="_blank" class="link-orange">virtual open house</a></span>
+              <span>Visit our <a href="https://onewaterhouston.org/virtual-open-house" target="_blank" class="link-orange">virtual open house</a></span>
             </li>
 
             <li class="d-flex align-items-start mb-3">
               <span class="material-symbols-outlined me-3 fs-2">public</span>
               <span>Explore the
-                <a href="https://houston.gov/onewater" target="_blank" class="link-orange">
+                <a href="https://onewaterhouston.org/" target="_blank" class="link-orange">
                   One Water Houston website</a> to learn more about the initiative,
                 discover where your water comes from, and test your water knowledge.
               </span>
@@ -203,29 +200,11 @@
 
           <div class="d-flex justify-content-between mt-4">
             <button id="back-3" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
-            <button id="next-3" class="btn btn-orange btn-lg nav-btn" aria-label="Next">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
+            <button id="return-3" class="btn btn-orange btn-lg nav-btn" aria-label="Return to One Water Houston">
+              <span class="material-symbols-outlined align-middle me-1">arrow_back</span>Return
+            </button>
           </div>
 
-          <p class="small text-center fst-italic mt-4">
-            Click anywhere to continue.
-          </p>
-        </section>
-
-        <!-- ========== SLIDE 4 – Thank You ================================ -->
-        <section id="slide4" class="d-none">
-          <section class="thankyou-section">
-            <ol class="refs mb-0">
-              <li>City of Los Angeles. <em>One Water LA 2040 Plan</em>, Volume&nbsp;1, Summary Report, April&nbsp;2018.</li>
-              <li>Green Portal. <em>Alleys – From Grey Alleys to Green Alleys</em>.</li>
-              <li>City of Austin. <em>Reuse in Water Forward</em>.</li>
-            </ol>
-            <h1 class="display-5">Thank&nbsp;you!</h1>
-            <p class="fs-4 mb-3">
-              You can return to this module at any time<br>
-              on the One Water Houston website.
-            </p>
-            <a href="home.html" class="btn btn-orange btn-lg px-5" aria-label="Exit module">Exit</a>
-          </section>
         </section>
 
       </div>
@@ -233,10 +212,6 @@
 
     <footer>
       <div class="text-center mt-3">
-        <p class="small text-muted fst-italic">
-          Click on the pictures to learn more about each topic. Then, click on
-          <span class="material-symbols-outlined align-middle">home</span> to return to the main home page.
-        </p>
       </div>
     </footer>
   </div>
@@ -244,7 +219,7 @@
   <script src="https://unpkg.com/swup@4"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const [s1, s2, s3, s4] = ['slide1', 'slide2', 'slide3', 'slide4']
+      const [s1, s2, s3] = ['slide1', 'slide2', 'slide3']
         .map(id => document.getElementById(id));
 
       // Thumbnail clicks
@@ -264,16 +239,25 @@
         s2.classList.add('d-none');
         s1.classList.remove('d-none');
       };
+      const return2 = document.getElementById('return-2');
+      if (return2) {
+        return2.onclick = () => {
+          s2.classList.add('d-none');
+          s1.classList.remove('d-none');
+        };
+      }
       document.getElementById('back-3').onclick = () => {
         s3.classList.add('d-none');
         s1.classList.remove('d-none');
       };
 
-      // Next from slide3 to slide4
-      document.getElementById('next-3').onclick = () => {
-        s3.classList.add('d-none');
-        s4.classList.remove('d-none');
-      };
+      const return3 = document.getElementById('return-3');
+      if (return3) {
+        return3.onclick = () => {
+          s3.classList.add('d-none');
+          s1.classList.remove('d-none');
+        };
+      }
     });
   </script>
 </body>

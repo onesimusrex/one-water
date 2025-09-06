@@ -115,9 +115,9 @@
       <button id="next-btn-1" class="btn btn-orange btn-lg nav-btn" aria-label="Next">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
     </div>
 
-    <p class="small text-center fst-italic mt-4">
+    <!-- <p class="small text-center fst-italic mt-4">
       Click on the icons to reveal the pillars of water equity. Then, click the arrow to continue.
-    </p>
+    </p> -->
   </section>
 
   <!-- === SLIDE 2 ================================================= -->
@@ -170,7 +170,68 @@
     <!-- Nav buttons -->
     <div class="d-flex justify-content-between mt-4">
       <button id="back-btn-2" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
-      <a href="home.html"
+      <button id="next-btn-2" class="btn btn-orange btn-lg nav-btn" aria-label="Next">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
+    </div>
+
+    <!-- <p class="small text-center fst-italic mt-4">
+      Click on the image to learn how One Water Houston is working to advance water equity.
+    </p> -->
+  </section>
+
+  <!-- === SLIDE 3 ================================================= -->
+  <section id="slide3" class="d-none">
+    <h1 class="display-5 fw-bold mb-4">One Water Houston will…</h1>
+
+    <div class="row g-4 align-items-start">
+      <div class="col-12">
+        <div class="row g-4 align-items-start">
+          <!-- Row 1 -->
+          <div class="col-auto">
+            <span class="material-symbols-outlined display-4 text-white" aria-hidden="true">groups</span>
+          </div>
+          <div class="col">
+            <p class="fs-3 mb-0">
+              Engage the public, community organizations, customers, and partner agencies collaboratively – as participants in water management and stewardship.
+            </p>
+          </div>
+          <div class="w-100"></div>
+          <!-- Row 2 -->
+          <div class="col-auto">
+            <span class="material-symbols-outlined display-4 text-white" aria-hidden="true">brightness_5</span>
+          </div>
+          <div class="col">
+            <p class="fs-3 mb-0">
+              Prioritize strategies, policies and projects that cultivate thriving neighborhoods and remove barriers to safe, clean water and wastewater services.
+            </p>
+          </div>
+          <div class="w-100"></div>
+          <!-- Row 3 -->
+          <div class="col-auto">
+            <span class="material-symbols-outlined display-4 text-white" aria-hidden="true">payments</span>
+          </div>
+          <div class="col">
+            <p class="fs-3 mb-0">
+              Leverage technology and innovative approaches to provide affordable, accessible and reliable services to meet the needs of current and future Houstonians.
+            </p>
+          </div>
+          <div class="w-100"></div>
+          <!-- Row 4 -->
+          <div class="col-auto">
+            <span class="material-symbols-outlined display-4 text-white" aria-hidden="true">account_balance</span>
+          </div>
+          <div class="col">
+            <p class="fs-3 mb-0">
+              Initiate and institute policies, programs and organizational changes to achieve Houston’s <span class="fw-bold text-info">vision</span> of a One Water city.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nav buttons -->
+    <div class="d-flex justify-content-between mt-4">
+      <button id="back-btn-3" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
+      <a href="key_concepts_of_one_water.html"
          class="btn btn-outline-light btn-lg nav-btn"
          aria-label="Home">
         <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
@@ -180,10 +241,6 @@
         </svg>
       </a>
     </div>
-
-    <p class="small text-center fst-italic mt-4">
-      Click on the image to learn how One Water Houston is working to advance water equity.
-    </p>
   </section>
 
 </div><!-- /.container -->
@@ -193,10 +250,10 @@
 <!-- Global Footer (unchanged) -->
 <footer class="pb-3">
     <div class="text-center mt-4">
-      <p class="small text-muted fst-italic mb-0">
+      <!-- <p class="small text-muted fst-italic mb-0">
         Click on the pictures to learn more about each topic.&nbsp;Then, click
         on&nbsp;<span class="material-symbols-outlined align-middle">home</span>&nbsp;to return to the main home page.
-      </p>
+      </p> -->
     </div>
   </footer>
 </div><!-- /#swup -->
@@ -212,6 +269,10 @@
     const nextBtn1  = document.getElementById('next-btn-1');
     const backBtn2  = document.getElementById('back-btn-2');
 
+    const slide3   = document.getElementById('slide3');
+    const nextBtn2 = document.getElementById('next-btn-2');
+    const backBtn3 = document.getElementById('back-btn-3');
+
     if(nextBtn1){
       nextBtn1.onclick = () => {
         slide1.classList.add('d-none');
@@ -222,6 +283,18 @@
       backBtn2.onclick = () => {
         slide2.classList.add('d-none');
         slide1.classList.remove('d-none');
+      };
+    }
+    if(nextBtn2){
+      nextBtn2.onclick = () => {
+        slide2.classList.add('d-none');
+        slide3.classList.remove('d-none');
+      };
+    }
+    if(backBtn3){
+      backBtn3.onclick = () => {
+        slide3.classList.add('d-none');
+        slide2.classList.remove('d-none');
       };
     }
   });

@@ -54,6 +54,16 @@
         white-space: normal;    /* allow lines to wrap nicely */
       }
     }
+    /* Match map pin labels/buttons to heading font (Eagle) */
+    .city-buttons .nav-btn{
+      font-family: "Eagle 4","Eagle-4","Eagle", var(--bs-font-sans-serif), system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-weight: 700; /* align with heading weight */
+      color: #fff !important; /* ensure white text */
+    }
+    /* Ensure Return button text is white (overrides .text-navy a) */
+    .text-navy a.nav-btn.btn-orange{
+      color: #fff !important;
+    }
   </style>
 
 </head>
@@ -125,19 +135,14 @@
         <!-- Back + Home nav -->
         <div class="d-flex justify-content-between mt-4">
           <button id="back-btn-2" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
-          <a href="home.html"
-             class="btn btn-outline-light btn-lg nav-btn"
-             aria-label="Home">
-            <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
-              <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3" opacity="0.9"/>
-              <path d="M20 12a 8 8 0 1 1 -2.34 -5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M20 3 v6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+          <a href="home.html" class="btn btn-orange btn-lg nav-btn" aria-label="Return to Home">
+            <span class="material-symbols-outlined align-middle me-1">arrow_back</span>
+            Return
           </a>
         </div>
 
         <p class="small text-center fst-italic mt-4">
-          Select Los Angeles, CA or Austin, TX below to learn more about their One Water plans.
+          Select Los Angeles, CA or Austin, TX above to learn more about their One Water plans.
         </p>
       </section>
 
@@ -231,6 +236,11 @@
 <!-- Global Footer (unchanged) -->
 <footer class="pb-3">
     <div class="text-center mt-4">
+      <p class="small text-muted fst-italic">
+        Click on the pictures to learn more about each topic. Then, click on
+        <span class="material-symbols-outlined align-middle">home</span>
+        to return to the main home page.
+      </p>
     </div>
   </footer>
 </div><!-- /#swup -->
@@ -260,4 +270,47 @@ document.addEventListener('DOMContentLoaded', ()=>{
 </script>
 
 </body>
+<script>
+  (function(){
+    const DURATION = 280; const EASING = 'ease-in-out';
+    const body = document.body; body.classList.add('page-fade');
+    body.style.opacity = 0; requestAnimationFrame(()=>{ body.style.opacity = 1; });
+
+    function isLocalLink(a){
+      if (!a) return false;
+      if (a.target === '_blank' || a.hasAttribute('download')) return false;
+      const url = new URL(a.getAttribute('href') || a.href, location.href);
+      if (url.origin !== location.origin) return false;
+      if (url.hash && url.pathname === location.pathname) return false;
+      if (!/^https?:|^file:/i.test(url.protocol)) return false;
+      return true;
+    }
+    function navigateWithFade(href){
+      body.style.opacity = 0;
+      setTimeout(()=>{ location.href = href; }, DURATION);
+    }
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('a[href]');
+      if (!isLocalLink(a)) return;
+      e.preventDefault();
+      navigateWithFade(a.href);
+    });
+    window.addEventListener('pageshow', ()=>{ body.style.opacity = 1; });
+
+    // Only used on pages that have internal “slides”
+    window.fadeSwap = function(hideEl, showEl, duration = DURATION){
+      if (!hideEl || !showEl) return;
+      const opts = { duration, easing: EASING, fill: 'forwards' };
+      if (!Element.prototype.animate) {
+        hideEl.classList.add('d-none'); showEl.classList.remove('d-none'); return;
+      }
+      const out = hideEl.animate([{opacity:1},{opacity:0}], opts);
+      out.finished.then(()=>{
+        hideEl.classList.add('d-none'); showEl.classList.remove('d-none');
+        showEl.style.opacity = 0;
+        showEl.animate([{opacity:0},{opacity:1}], opts).finished.then(()=>{ showEl.style.opacity=''; });
+      });
+    };
+  })();
+</script>
 </html>

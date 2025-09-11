@@ -197,7 +197,7 @@
 
             <!-- Page navigation: Next (right only) -->
             <div class="d-flex justify-content-end align-items-center mt-3">
-              <button id="next-btn" class="btn btn-orange btn-lg d-none nav-btn" aria-label="Next slide">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
+              <button id="next-btn" class="btn btn-orange btn-lg nav-btn" aria-label="Next slide">Next <span class="material-symbols-outlined align-middle ms-1">arrow_forward</span></button>
             </div>
           </div>
         </div>
@@ -266,10 +266,10 @@
     <!-- Global Footer (unchanged) -->
     <footer class="pb-3">
       <div class="text-center mt- 4">
-        <!-- <p class="small text-muted fst-italic mb-0">
+        <p class="small text-muted fst-italic mb-0">
           Click on the pictures to learn more about each topic.&nbsp;Then, click
           on&nbsp;<span class="material-symbols-outlined align-middle">home</span>&nbsp;to return to the main home page.
-        </p> -->
+        </p>
       </div>
     </footer>
   </div><!-- /#swup -->
@@ -293,7 +293,7 @@
       wrapper.addEventListener('click', (e) => {
         e.preventDefault();
         wrapper.classList.toggle('active');
-        nextBtn.classList.toggle('d-none', !wrapper.classList.contains('active'));
+        // nextBtn.classList.toggle('d-none', !wrapper.classList.contains('active'));
       });
 
       // Advance to second content block
@@ -326,10 +326,54 @@
         wrapper.parentElement.classList.remove('d-none'); // show hero row
         if (mobileIntro) mobileIntro.classList.remove('d-none'); // show mobile-only intro again
         wrapper.classList.remove('active');           // reset overlay
-        nextBtn.classList.add('d-none');              // hide next button
+        if (nextBtn) nextBtn.classList.remove('d-none');
+        if (nextBtnMobile) nextBtnMobile.classList.remove('d-none');
         // back button is inside nextContent; hiding the container is enough
       });
     });
   </script>
 </body>
+<script>
+  (function(){
+    const DURATION = 280; const EASING = 'ease-in-out';
+    const body = document.body; body.classList.add('page-fade');
+    body.style.opacity = 0; requestAnimationFrame(()=>{ body.style.opacity = 1; });
+
+    function isLocalLink(a){
+      if (!a) return false;
+      if (a.target === '_blank' || a.hasAttribute('download')) return false;
+      const url = new URL(a.getAttribute('href') || a.href, location.href);
+      if (url.origin !== location.origin) return false;
+      if (url.hash && url.pathname === location.pathname) return false;
+      if (!/^https?:|^file:/i.test(url.protocol)) return false;
+      return true;
+    }
+    function navigateWithFade(href){
+      body.style.opacity = 0;
+      setTimeout(()=>{ location.href = href; }, DURATION);
+    }
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('a[href]');
+      if (!isLocalLink(a)) return;
+      e.preventDefault();
+      navigateWithFade(a.href);
+    });
+    window.addEventListener('pageshow', ()=>{ body.style.opacity = 1; });
+
+    // Only used on pages that have internal “slides”
+    window.fadeSwap = function(hideEl, showEl, duration = DURATION){
+      if (!hideEl || !showEl) return;
+      const opts = { duration, easing: EASING, fill: 'forwards' };
+      if (!Element.prototype.animate) {
+        hideEl.classList.add('d-none'); showEl.classList.remove('d-none'); return;
+      }
+      const out = hideEl.animate([{opacity:1},{opacity:0}], opts);
+      out.finished.then(()=>{
+        hideEl.classList.add('d-none'); showEl.classList.remove('d-none');
+        showEl.style.opacity = 0;
+        showEl.animate([{opacity:0},{opacity:1}], opts).finished.then(()=>{ showEl.style.opacity=''; });
+      });
+    };
+  })();
+</script>
 </html>

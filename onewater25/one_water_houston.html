@@ -81,7 +81,7 @@
       <div class="container py-5 mobile-comfy">
 
         <!-- ========== SLIDE 1 – chooser ================================= -->
-        <section id="slide1">
+        <section id="slide1" data-show-instructions>
           <div class="row justify-content-center mb-4 text-center">
             <h1 class="slide-title2">One Water Houston</h1>
             <p class="lead text-navy">
@@ -111,6 +111,12 @@
                 How your input will shape the One Water Houston plan
               </h6>
             </div>
+          </div>
+          <div class="d-flex justify-content-end mt-3">
+            <a href="home.html" class="btn btn-orange btn-lg nav-btn" aria-label="Return to Home">
+              <span class="material-symbols-outlined align-middle me-1">arrow_back</span>
+              Return
+            </a>
           </div>
         </section>
 
@@ -147,10 +153,13 @@
 
           <div class="d-flex justify-content-between mt-4">
             <button id="back-2" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
-            <a id="return-2" href="/home.html" class="btn btn-orange btn-lg nav-btn" aria-label="Return to Key Concepts of One Water">
-              <span class="material-symbols-outlined align-middle me-1">arrow_back</span>
-              Return
-            </a>
+            <button id="circle-return-2" class="btn btn-outline-light btn-lg nav-btn" aria-label="Back to Be a part of One Water Houston">
+              <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3" opacity="0.9"/>
+                <path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 3v6h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
 
         </section>
@@ -197,7 +206,7 @@
 
           <div class="d-flex justify-content-between mt-4">
             <button id="back-3" class="btn btn-orange btn-lg nav-btn" aria-label="Back"><span class="material-symbols-outlined align-middle me-1">arrow_back</span>Previous</button>
-            <a id="return-3" href="/home.html" class="btn btn-outline-light btn-lg nav-btn" aria-label="Home">
+            <a id="return-3" href="home.html" class="btn btn-outline-light btn-lg nav-btn" aria-label="Home">
               <svg class="icon-restart align-middle" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                 <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3" opacity="0.9"/>
                 <path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -211,7 +220,7 @@
       </div>
     </article>
 
-    <footer>
+    <footer id="instructions-footer" class="pb-3">
       <div class="text-center mt-3">
         <p class="small text-muted fst-italic">
           Click on the pictures to learn more about each topic. Then, click on <span
@@ -227,28 +236,42 @@
     document.addEventListener('DOMContentLoaded', () => {
       const [s1, s2, s3] = ['slide1', 'slide2', 'slide3']
         .map(id => document.getElementById(id));
+      const instructionsFooter = document.getElementById('instructions-footer');
 
       // Thumbnail clicks
       document.getElementById('btn-devproc').onclick = e => {
         e.preventDefault();
         s1.classList.add('d-none');
         s2.classList.remove('d-none');
+        if (instructionsFooter) instructionsFooter.classList.add('d-none');
       };
       document.getElementById('btn-input').onclick = e => {
         e.preventDefault();
         s1.classList.add('d-none');
         s3.classList.remove('d-none');
+        if (instructionsFooter) instructionsFooter.classList.add('d-none');
       };
 
       // Back buttons
       document.getElementById('back-2').onclick = () => {
         s2.classList.add('d-none');
         s1.classList.remove('d-none');
+        if (instructionsFooter) instructionsFooter.classList.remove('d-none');
       };
+
+      const circleReturn2 = document.getElementById('circle-return-2');
+      if (circleReturn2) {
+        circleReturn2.onclick = () => {
+          s2.classList.add('d-none');
+          s1.classList.remove('d-none');
+          if (instructionsFooter) instructionsFooter.classList.remove('d-none');
+        };
+      }
 
       document.getElementById('back-3').onclick = () => {
         s3.classList.add('d-none');
         s1.classList.remove('d-none');
+        if (instructionsFooter) instructionsFooter.classList.remove('d-none');
       };
 
     });

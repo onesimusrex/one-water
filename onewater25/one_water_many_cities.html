@@ -84,7 +84,7 @@
     <div class="container-lg text-navy py-5 mobile-comfy">
 
       <!-- === SLIDE 1 : overview flyer ======================================= -->
-      <section id="slide1">
+      <section id="slide1" data-show-instructions>
         <h1 class="display-5 fw-bold mb-4 text-navy">One Water, Many Cities</h1>
 
         <div class="row gy-4 align-items-center">
@@ -234,7 +234,7 @@
 
     
 <!-- Global Footer (unchanged) -->
-<footer class="pb-3">
+<footer id="instructions-footer" class="pb-3">
     <div class="text-center mt-4">
       <p class="small text-muted fst-italic">
         Click on the pictures to learn more about each topic. Then, click on
@@ -252,20 +252,46 @@
 document.addEventListener('DOMContentLoaded', ()=>{
 
   const [s1,s2,s3,s4] = ['slide1','slide2','slide3','slide4'].map(id=>document.getElementById(id));
+  const instructionsFooter = document.getElementById('instructions-footer');
+  function showFooterFor(el){
+    if (!instructionsFooter) return;
+    const isFirst = !!(el && el.hasAttribute && el.hasAttribute('data-show-instructions'));
+    instructionsFooter.classList.toggle('d-none', !isFirst);
+  }
+  // initialize for first render
+  showFooterFor(s1);
 
   // Slide 1 -> 2
-  document.getElementById('next-btn-1').onclick = ()=>{s1.classList.add('d-none'); s2.classList.remove('d-none');};
+  document.getElementById('next-btn-1').onclick = ()=>{
+    s1.classList.add('d-none'); s2.classList.remove('d-none');
+    showFooterFor(s2);
+  };
 
   // Slide 2 back
-  document.getElementById('back-btn-2').onclick = ()=>{s2.classList.add('d-none'); s1.classList.remove('d-none');};
+  document.getElementById('back-btn-2').onclick = ()=>{
+    s2.classList.add('d-none'); s1.classList.remove('d-none');
+    showFooterFor(s1);
+  };
 
   // Map buttons
-  document.getElementById('btn-la').onclick     = ()=>{s2.classList.add('d-none'); s3.classList.remove('d-none');};
-  document.getElementById('btn-austin').onclick = ()=>{s2.classList.add('d-none'); s4.classList.remove('d-none');};
+  document.getElementById('btn-la').onclick = ()=>{
+    s2.classList.add('d-none'); s3.classList.remove('d-none');
+    showFooterFor(s3);
+  };
+  document.getElementById('btn-austin').onclick = ()=>{
+    s2.classList.add('d-none'); s4.classList.remove('d-none');
+    showFooterFor(s4);
+  };
 
   // Return to map from city slides
-  document.getElementById('map-return-3').onclick = ()=>{s3.classList.add('d-none'); s2.classList.remove('d-none');};
-  document.getElementById('map-return-4').onclick = ()=>{s4.classList.add('d-none'); s2.classList.remove('d-none');};
+  document.getElementById('map-return-3').onclick = ()=>{
+    s3.classList.add('d-none'); s2.classList.remove('d-none');
+    showFooterFor(s2);
+  };
+  document.getElementById('map-return-4').onclick = ()=>{
+    s4.classList.add('d-none'); s2.classList.remove('d-none');
+    showFooterFor(s2);
+  };
 });
 </script>
 

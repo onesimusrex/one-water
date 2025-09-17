@@ -263,9 +263,9 @@
       </section>
     </article>
 
-    <!-- Global Footer (unchanged) -->
-    <footer class="pb-3">
-      <div class="text-center mt- 4">
+    <!-- Global Footer (toggleable) -->
+    <footer id="instructions-footer" class="pb-3">
+      <div class="text-center mt-4">
         <p class="small text-muted fst-italic mb-0">
           Click on the pictures to learn more about each topic.&nbsp;Then, click
           on&nbsp;<span class="material-symbols-outlined align-middle">home</span>&nbsp;to return to the main home page.
@@ -286,6 +286,7 @@
       const nextContent = document.getElementById('next-content');
       const backBtn     = document.getElementById('back-btn');
       const mobileIntro = document.getElementById('mobile-intro');
+      const instructionsFooter = document.getElementById('instructions-footer');
 
       if (!wrapper || !nextBtn || !nextContent || !backBtn) return;
 
@@ -303,6 +304,7 @@
         if (mobileIntro) mobileIntro.classList.add('d-none'); // also hide mobile-only intro on slide two
         nextContent.classList.remove('d-none');        // show new slide
         nextBtn.classList.add('d-none');               // hide button
+        if (instructionsFooter) instructionsFooter.classList.add('d-none');
       });
 
       // Advance from mobile intro to second content block
@@ -316,6 +318,7 @@
           nextContent.classList.remove('d-none');
           if (nextBtn) nextBtn.classList.add('d-none');
           nextBtnMobile.classList.add('d-none');
+          if (instructionsFooter) instructionsFooter.classList.add('d-none');
         });
       }
 
@@ -328,6 +331,7 @@
         wrapper.classList.remove('active');           // reset overlay
         if (nextBtn) nextBtn.classList.remove('d-none');
         if (nextBtnMobile) nextBtnMobile.classList.remove('d-none');
+        if (instructionsFooter) instructionsFooter.classList.remove('d-none');
         // back button is inside nextContent; hiding the container is enough
       });
     });

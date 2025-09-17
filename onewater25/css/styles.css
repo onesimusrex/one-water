@@ -347,3 +347,5 @@ h6 {
   font-weight: bolder;
 }
 
+/* Page & slide dissolve transitions (no external library) */
+body.page-fade { transition: opacity 280ms ease-in-out; }

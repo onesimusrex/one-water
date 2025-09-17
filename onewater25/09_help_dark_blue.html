@@ -17,6 +17,7 @@
     body {
       color: #fff;
       min-height: 100vh;
+      font-size: 1.125rem;
     }
     .instructions {
       margin-top: 1.5rem;
@@ -27,7 +28,7 @@
     }
     .text-muted-bottom {
       color: #b2c0d9;
-      font-size: 1rem;
+      font-size: inherit;
       margin-top: 60px;
       text-align: center;
       font-style: italic;
@@ -58,13 +59,12 @@
   <div class="container text-center help-wrap">
     <div class="instructions">
       <p>
-        Look for <span style="font-style:italic;">on-screen instructions</span> to guide you through the module
+        Look for <span style="font-style:italic;">on-screen instructions</span> to guide you through the module.
       </p>
-      <p class="mt-4 mb-2"><strong>Use the buttons at the bottom of each page to:</strong></p>
+      <p class="mt-4 mb-2"><strong>Use the buttons at the top of each page to:</strong></p>
       <div class="module-btns text-start d-inline-block">
         <div class="mb-2"><span class="material-symbols-outlined">home</span>Return to the main home page</div>
         <div class="mb-2"><span class="material-symbols-outlined">menu_book</span>View the glossary of important terms</div>
-        <div><span class="material-symbols-outlined">close</span>Exit the module</div>
       </div>
     </div>
     <div class="text-muted-bottom">
@@ -95,4 +95,47 @@
     })();
   </script>
 </body>
+<script>
+  (function(){
+    const DURATION = 280; const EASING = 'ease-in-out';
+    const body = document.body; body.classList.add('page-fade');
+    body.style.opacity = 0; requestAnimationFrame(()=>{ body.style.opacity = 1; });
+
+    function isLocalLink(a){
+      if (!a) return false;
+      if (a.target === '_blank' || a.hasAttribute('download')) return false;
+      const url = new URL(a.getAttribute('href') || a.href, location.href);
+      if (url.origin !== location.origin) return false;
+      if (url.hash && url.pathname === location.pathname) return false;
+      if (!/^https?:|^file:/i.test(url.protocol)) return false;
+      return true;
+    }
+    function navigateWithFade(href){
+      body.style.opacity = 0;
+      setTimeout(()=>{ location.href = href; }, DURATION);
+    }
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('a[href]');
+      if (!isLocalLink(a)) return;
+      e.preventDefault();
+      navigateWithFade(a.href);
+    });
+    window.addEventListener('pageshow', ()=>{ body.style.opacity = 1; });
+
+    // Only used on pages that have internal “slides”
+    window.fadeSwap = function(hideEl, showEl, duration = DURATION){
+      if (!hideEl || !showEl) return;
+      const opts = { duration, easing: EASING, fill: 'forwards' };
+      if (!Element.prototype.animate) {
+        hideEl.classList.add('d-none'); showEl.classList.remove('d-none'); return;
+      }
+      const out = hideEl.animate([{opacity:1},{opacity:0}], opts);
+      out.finished.then(()=>{
+        hideEl.classList.add('d-none'); showEl.classList.remove('d-none');
+        showEl.style.opacity = 0;
+        showEl.animate([{opacity:0},{opacity:1}], opts).finished.then(()=>{ showEl.style.opacity=''; });
+      });
+    };
+  })();
+</script>
 </html>

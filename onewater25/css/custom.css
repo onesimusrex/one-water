@@ -307,3 +307,15 @@ img, svg, video { max-width: 100%; height: auto; }
 
 /* Arrow icons inside buttons: consistent sizing and alignment */
 .btn .material-symbols-outlined{ font-size:1.25em; line-height:1; vertical-align:-0.15em; }
+
+/* --- FIX: Do not crop the One Water droplet overlay inside 3:4 wrappers --- */
+.ratio-3x4-wrap .overlay-icon{
+  /* override the generic 3:4 media rule that sets inset:0; width/height:100% */
+  inset: auto;
+  width: auto;
+  height: auto;
+  max-width: 58%;
+  max-height: 58%;
+  object-fit: contain;
+  pointer-events: none; /* keep clicks on the image beneath */
+}
